@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Mini Siga</string>
+    <string name="initials_or_cpf">Sigla ou CPF</string>
+    <string name="password">Senha</string>
+    <string name="enter">Entrar</string>
+    <string name="register_college">Cadastrar faculdade</string>
+    <string name="config_network">Configurar rede</string>
+    <string name="text_explain_ip">Digite o IP do servidor com apenas números e pontos.\nLembre de certificar se o servidor está disnponível</string>
+    <string name="type_the_ip">Digite o IP</string>
+    <string name="invalid_ip">Ip inválido</string>
+    <string name="ip_saved">IP salvo</string>
+    <string name="college">Faculdade</string>
+    <string name="initials">Sigla</string>
+    <string name="name">Nome</string>
+    <string name="city">Cidade</string>
+    <string name="address">Endereço</string>
+    <string name="save">Salvar</string>
+    <string name="required_field">Campo obrigatório</string>
+    <string name="IP_required">Defina um IP nas configurações</string>
 </resources>
