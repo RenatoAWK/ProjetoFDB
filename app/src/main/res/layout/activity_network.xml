@@ -17,15 +17,11 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ipLayoutNetwork"
             style="@style/_textInputLayoutOutlined">
-
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ipEditNetwork"
                 style="@style/_textInputEdit"
                 android:hint="@string/type_the_ip"
                 android:inputType="text">
-
             </com.google.android.material.textfield.TextInputEditText>
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton

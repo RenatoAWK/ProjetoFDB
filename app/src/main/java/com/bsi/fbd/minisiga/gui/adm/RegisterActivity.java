@@ -20,25 +20,17 @@ import com.bsi.fbd.minisiga.modelo.Connection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private com.google.android.material.textfield.TextInputLayout siglaLayout;
-    private com.google.android.material.textfield.TextInputEditText siglaEdit;
-
     private com.google.android.material.textfield.TextInputLayout nomeLayout;
-    private com.google.android.material.textfield.TextInputEditText nomeEdit;
-
     private com.google.android.material.textfield.TextInputLayout cidadeLayout;
-    private com.google.android.material.textfield.TextInputEditText cidadeEdit;
-
     private com.google.android.material.textfield.TextInputLayout enderecoLayout;
-    private com.google.android.material.textfield.TextInputEditText enderecoEdit;
-
     private com.google.android.material.textfield.TextInputLayout senhaLayout;
-    private com.google.android.material.textfield.TextInputEditText senhaEdit;
 
     private RequestQueue requestQueue;
 
@@ -50,20 +42,10 @@ public class RegisterActivity extends AppCompatActivity {
         actionBar.hide();
 
         siglaLayout = findViewById(R.id.siglaLayoutRegister);
-        siglaEdit = findViewById(R.id.siglaEditRegister);
-
         nomeLayout = findViewById(R.id.nomeLayoutRegister);
-        nomeEdit = findViewById(R.id.nomeEditRegister);
-
         cidadeLayout = findViewById(R.id.cidadeLayoutRegister);
-        cidadeEdit = findViewById(R.id.cidadeEditRegister);
-
         enderecoLayout = findViewById(R.id.enderecoLayoutRegister);
-        enderecoEdit = findViewById(R.id.enderecoEditRegister);
-
         senhaLayout = findViewById(R.id.senhaLayoutRegister);
-        senhaEdit = findViewById(R.id.senhaEditRegister);
-
         requestQueue = Volley.newRequestQueue(this);
 
     }
@@ -71,86 +53,71 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void salvar(View view) {
         boolean valido = true;
-        if (nomeEdit.getText().toString().isEmpty()){
-            valido = false;
-            siglaLayout.setError(getApplicationContext().getString(R.string.required_field));
-        } else {
-            siglaLayout.setError(null);
+        ArrayList list = new ArrayList<com.google.android.material.textfield.TextInputLayout>();
+        list.add(siglaLayout);
+        list.add (nomeLayout);
+        list.add (cidadeLayout);
+        list.add (enderecoLayout);
+        list.add (senhaLayout);
+        for (Object object: list){
+            com.google.android.material.textfield.TextInputLayout textInputLayout = (com.google.android.material.textfield.TextInputLayout)object;
+            if (textInputLayout.getEditText().getText().toString().isEmpty()){
+                textInputLayout.setError(getApplicationContext().getString(R.string.required_field));
+                valido = false;
+            } else {
+                textInputLayout.setError(null);
+            }
         }
 
-        if (nomeEdit.getText().toString().isEmpty()){
-            valido = false;
-            nomeLayout.setError(getApplicationContext().getString(R.string.required_field));
-        } else {
-            nomeLayout.setError(null);
-        }
-
-
-        if (cidadeEdit.getText().toString().isEmpty()){
-            valido = false;
-            cidadeLayout.setError(getApplicationContext().getString(R.string.required_field));
-        } else {
-            cidadeLayout.setError(null);
-        }
-
-        if (enderecoEdit.getText().toString().isEmpty()){
-            valido = false;
-            enderecoLayout.setError(getApplicationContext().getString(R.string.required_field));
-        } else {
-            enderecoLayout.setError(null);
-        }
-
-        if (senhaEdit.getText().toString().isEmpty()){
-            valido = false;
-            senhaLayout.setError(getApplicationContext().getString(R.string.required_field));
-        } else {
-            senhaLayout.setError(null);
-        }
 
         if (valido){
             if (Connection.getUrl() != null){
-                String url = Connection.getUrl()+"registerfaculdade.php"; // Completa com o ip já salvo
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            // aquit trata da resposta, o jsonObject vira tipo um dicionário
-                            public void onResponse(String response) {
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
-                                    if (!error) {
-                                        Toast.makeText(getApplicationContext(), "Cadastro realizado", Toast.LENGTH_LONG).show();
-                                    } else {
-                                        String motivo = jsonObject.getString("motivo");
-                                        Toast.makeText(getApplicationContext(), motivo, Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (JSONException e) {
-                                    Toast.makeText(getApplicationContext(), "Não foi possível cadastrar ", Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        },
-                    new Response.ErrorListener() {
-                        @Override
-                        //Ele cai aqui se der algum erro bizarro, como não ter conexão
-                        public void onErrorResponse(VolleyError error) {
-                            String motivo = error.getMessage();
-                            Toast.makeText(getApplicationContext(), "Erro desconhecido: "+motivo, Toast.LENGTH_LONG).show();
 
-                        }
-                }
-                ) {
+                String url = Connection.getUrl()+"registerfaculdade.php"; // Completa com o ip já salvo
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
-                    //aqui são os parâmetros que serão enviados
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("sigla",siglaEdit.getText().toString());
-                        params.put("nome",nomeEdit.getText().toString());
-                        params.put("cidade",cidadeEdit.getText().toString());
-                        params.put("endereco",enderecoEdit.getText().toString());
-                        params.put("senha", senhaEdit.getText().toString());
-                        return params;
+                    // Chama quando consegue uma resposta
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
+                            if (!error) {
+                                Toast.makeText(getApplicationContext(), "Cadastro realizado", Toast.LENGTH_LONG).show();
+                            } else {
+                                String motivo = jsonObject.getString("motivo");
+                                Toast.makeText(getApplicationContext(), motivo, Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(), "Não foi possível cadastrar ", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 };
+
+                Response.ErrorListener errorListener = new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        String motivo = error.getMessage();
+                        Toast.makeText(getApplicationContext(), "Erro desconhecido: "+motivo, Toast.LENGTH_LONG).show();
+                    }
+                };
+
+                StringRequest stringRequest = new StringRequest(
+                        Request.Method.POST, url, responseListener, errorListener)
+                        {
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("sigla",siglaLayout.getEditText().getText().toString());
+                                params.put("nome",nomeLayout.getEditText().getText().toString());
+                                params.put("cidade",cidadeLayout.getEditText().getText().toString());
+                                params.put("endereco",enderecoLayout.getEditText().getText().toString());
+                                params.put("senha", senhaLayout.getEditText().getText().toString());
+                                return params;
+                            }
+                        };
+
                 requestQueue.add(stringRequest);
 
             } else {

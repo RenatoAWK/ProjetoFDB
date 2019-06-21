@@ -22,7 +22,6 @@
             style="@style/_textInputLayoutOutlined">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginEditLogin"
                 style="@style/_textInputEdit"
                 android:hint="@string/initials_or_cpf"
                 android:inputType="text">
@@ -36,7 +35,6 @@
             style="@style/_textInputLayoutOutlined">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/senhaEditLogin"
                 style="@style/_textInputEdit"
                 android:hint="@string/password"
                 android:inputType="textPassword">

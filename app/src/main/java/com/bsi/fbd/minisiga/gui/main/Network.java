@@ -13,7 +13,6 @@ import com.bsi.fbd.minisiga.modelo.Connection;
 
 public class Network extends AppCompatActivity {
     private com.google.android.material.textfield.TextInputLayout ipLayout;
-    private com.google.android.material.textfield.TextInputEditText ipEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +22,10 @@ public class Network extends AppCompatActivity {
         actionBar.hide();
 
         ipLayout = findViewById(R.id.ipLayoutNetwork);
-        ipEdit = findViewById(R.id.ipEditNetwork);
-
     }
 
     public void salvar(View view) {
-        String ip = ipEdit.getText().toString().trim();
+        String ip = ipLayout.getEditText().getText().toString().trim();
         if (Patterns.IP_ADDRESS.matcher(ip).matches()){
             Connection.setIp(ip);
             Toast.makeText(getApplication(), "IP salvo",Toast.LENGTH_SHORT).show();
