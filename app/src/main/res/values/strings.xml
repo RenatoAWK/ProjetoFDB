@@ -32,4 +32,6 @@
     <string name="block_code">Código do bloco</string>
     <string name="area">Área</string>
     <string name="type">Tipo</string>
+    <string name="CPF">CPF</string>
+    <string name="student">Aluno</string>
 </resources>

@@ -88,10 +88,10 @@ public class AlunoAdmFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
             cpfLayout = getView().findViewById(R.id.cpfLayoutRegister);
-            nomeLayout = getView().findViewById(R.id.nomeAlunoLayoutRegister);
-            enderecoLayout = getView().findViewById(R.id.enderecoAlunoLayoutRegister);
-            emailLayout = getView().findViewById(R.id.emailAlunoLayoutRegister);
-            senhaLayout = getView().findViewById(R.id.senhaAlunoLayoutRegister);
+            nomeLayout = getView().findViewById(R.id.nomeLayoutRegister);
+            enderecoLayout = getView().findViewById(R.id.enderecoLayoutRegister);
+            emailLayout = getView().findViewById(R.id.emailLayoutRegister);
+            senhaLayout = getView().findViewById(R.id.senhaLayoutRegister);
             requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         }
     }
