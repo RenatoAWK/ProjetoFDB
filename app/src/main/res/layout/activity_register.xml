@@ -58,6 +58,17 @@
                 android:inputType="text|textMultiLine">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
+        emailLayoutRegister
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayoutRegister"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/senhaLayoutRegister"

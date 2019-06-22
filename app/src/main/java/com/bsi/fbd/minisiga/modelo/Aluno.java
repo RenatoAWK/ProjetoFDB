@@ -6,6 +6,7 @@ public class Aluno {
     private String cpf;
     private String nome;
     private String endereco;
+    private String email;
     private String senha;
 
     public String getCpf() {
@@ -41,4 +42,11 @@ public class Aluno {
         this.senha = senha;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

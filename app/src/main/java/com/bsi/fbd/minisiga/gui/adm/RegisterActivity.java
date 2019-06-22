@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     private com.google.android.material.textfield.TextInputLayout nomeLayout;
     private com.google.android.material.textfield.TextInputLayout cidadeLayout;
     private com.google.android.material.textfield.TextInputLayout enderecoLayout;
+    private com.google.android.material.textfield.TextInputLayout emailLayout;
     private com.google.android.material.textfield.TextInputLayout senhaLayout;
 
     private RequestQueue requestQueue;
@@ -45,6 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         nomeLayout = findViewById(R.id.nomeLayoutRegister);
         cidadeLayout = findViewById(R.id.cidadeLayoutRegister);
         enderecoLayout = findViewById(R.id.enderecoLayoutRegister);
+        emailLayout = findViewById(R.id.emailLayoutRegister);
         senhaLayout = findViewById(R.id.senhaLayoutRegister);
         requestQueue = Volley.newRequestQueue(this);
 
@@ -58,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         list.add (nomeLayout);
         list.add (cidadeLayout);
         list.add (enderecoLayout);
+        list.add(emailLayout);
         list.add (senhaLayout);
         for (Object object: list){
             com.google.android.material.textfield.TextInputLayout textInputLayout = (com.google.android.material.textfield.TextInputLayout)object;
@@ -67,6 +71,13 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 textInputLayout.setError(null);
             }
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailLayout.getEditText().getText().toString().trim()).matches()){
+            emailLayout.setError(getApplicationContext().getString(R.string.invalid_email));
+            valido = false;
+        } else {
+            emailLayout.setError(null);
         }
 
 
@@ -109,11 +120,12 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             protected Map<String, String> getParams() throws AuthFailureError {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("sigla",siglaLayout.getEditText().getText().toString());
-                                params.put("nome",nomeLayout.getEditText().getText().toString());
-                                params.put("cidade",cidadeLayout.getEditText().getText().toString());
-                                params.put("endereco",enderecoLayout.getEditText().getText().toString());
-                                params.put("senha", senhaLayout.getEditText().getText().toString());
+                                params.put("sigla",siglaLayout.getEditText().getText().toString().trim());
+                                params.put("nome",nomeLayout.getEditText().getText().toString().trim());
+                                params.put("cidade",cidadeLayout.getEditText().getText().toString().trim());
+                                params.put("endereco",enderecoLayout.getEditText().getText().toString().trim());
+                                params.put("email", emailLayout.getEditText().getText().toString().trim());
+                                params.put("senha", senhaLayout.getEditText().getText().toString().trim());
                                 return params;
                             }
                         };

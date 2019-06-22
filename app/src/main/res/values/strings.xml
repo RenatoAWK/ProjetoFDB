@@ -17,4 +17,6 @@
     <string name="save">Salvar</string>
     <string name="required_field">Campo obrigatório</string>
     <string name="IP_required">Defina um IP nas configurações</string>
+    <string name="email">Email</string>
+    <string name="invalid_email">Email inválido</string>
 </resources>
