@@ -3,13 +3,11 @@ package com.bsi.fbd.minisiga.gui.adm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
@@ -33,24 +31,19 @@ public class Main_Adm_Activity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (tabs.getSelectedTabPosition()){
-                    case 0:
-                        /// cadastrar bloco
-                        Intent intent = new Intent(getApplicationContext(), BlocoRegisterAdm.class);
-                        startActivity(intent);
-                        break;
-                    case 1:
-                        /// cadastrar aluno
-                        break;
-                    case  2:
-                        /// cadastrar professor
-                        break;
+                int position = tabs.getSelectedTabPosition();
+                if (position == 0) {
+                    /// cadastrar bloco
+                    Intent intent = new Intent(getApplicationContext(), BlocoRegisterAdm.class);
+                    startActivity(intent);
+                } else if (position == 1) {
+                    /// cadastrar aluno
+                    Intent intent = new Intent(getApplicationContext(), AlunoRegisterAdm.class);
+                    startActivity(intent);
+                } else if (position == 2) {
+                    /// cadastrar professor
                 }
-
-
-
-
             }
         });
-    }
+    };
 }

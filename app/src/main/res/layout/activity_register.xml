@@ -42,7 +42,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enderecoLayoutRegister"
+            android:id="@+id/enderecoLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
@@ -72,7 +72,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cadastrarButtonRegister"
+            android:id="@+id/cadastrarButtonRegisterAluno"
             style="@style/_button"
             android:text="@string/save"
             android:onClick="salvar"/>

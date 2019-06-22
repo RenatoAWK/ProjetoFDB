@@ -44,7 +44,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cadastrarButtonRegister"
+            android:id="@+id/cadastrarButtonRegisterAluno"
             style="@style/_button"
             android:text="@string/save"
             android:onClick="salvar"/>

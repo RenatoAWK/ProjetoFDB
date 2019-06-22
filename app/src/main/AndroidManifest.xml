@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.RegisterAluno"></activity>
+        <activity android:name=".gui.adm.AlunoRegisterAdm"></activity>
         <activity android:name=".gui.adm.BlocoRegisterAdm" />
         <activity
             android:name=".gui.adm.Main_Adm_Activity"
