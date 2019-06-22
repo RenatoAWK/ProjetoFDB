@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bsi.fbd.minisiga">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.RegisterActivity"></activity>
+        <activity
+            android:name=".gui.adm.Main_Adm_Activity"
+            android:label="@string/title_activity_main_adm_"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".gui.adm.RegisterActivity" />
         <activity android:name=".gui.main.Network" />
         <activity android:name=".gui.main.LoginActivity">
             <intent-filter>

@@ -94,13 +94,13 @@ public class RegisterActivity extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
                             if (!error) {
+                                finish();
                                 Toast.makeText(getApplicationContext(), "Cadastro realizado", Toast.LENGTH_LONG).show();
                             } else {
-                                String motivo = jsonObject.getString("motivo");
-                                Toast.makeText(getApplicationContext(), motivo, Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Erro 1", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Não foi possível cadastrar ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Erro 2 ", Toast.LENGTH_LONG).show();
                         }
 
                     }

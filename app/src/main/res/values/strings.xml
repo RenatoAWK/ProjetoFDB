@@ -19,4 +19,13 @@
     <string name="IP_required">Defina um IP nas configurações</string>
     <string name="email">Email</string>
     <string name="invalid_email">Email inválido</string>
+    <string name="title_activity_main_adm">MainAdmActivity</string>
+    <string name="blocks">Blocos</string>
+    <string name="teachers">Professores</string>
+    <string name="students">Alunos</string>
+    <string name="title_activity_main_adm_">Main_Adm_Activity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo">logo</string>
 </resources>
