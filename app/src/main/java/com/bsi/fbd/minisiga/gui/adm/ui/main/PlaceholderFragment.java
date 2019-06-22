@@ -4,12 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bsi.fbd.minisiga.R;
@@ -46,7 +43,7 @@ public class PlaceholderFragment extends Fragment {
         View root = null;
         switch (getArguments().getInt(ARG_SECTION_NUMBER)){
             case 1:
-                root = inflater.inflate(R.layout.fragment_bloco_adm_, container, false);
+                root = inflater.inflate(R.layout.fragment_bloco_adm, container, false);
                 break;
             case 2:
                 root = inflater.inflate(R.layout.fragment_aluno_adm, container, false);

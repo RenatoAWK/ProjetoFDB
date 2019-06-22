@@ -1,5 +1,6 @@
 package com.bsi.fbd.minisiga.gui.adm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -28,13 +29,27 @@ public class Main_Adm_Activity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         final TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, String.valueOf(tabs.getSelectedTabPosition()), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                switch (tabs.getSelectedTabPosition()){
+                    case 0:
+                        /// cadastrar bloco
+                        Intent intent = new Intent(getApplicationContext(), BlocoRegisterAdm.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        /// cadastrar aluno
+                        break;
+                    case  2:
+                        /// cadastrar professor
+                        break;
+                }
+
+
+
+
             }
         });
     }

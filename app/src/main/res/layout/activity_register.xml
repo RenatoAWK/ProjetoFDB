@@ -8,15 +8,8 @@
         style="@style/_linearLayout">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:textSize="26sp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
             android:text="@string/college"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="50dp"/>
+            style="@style/_registerTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/siglaLayoutRegister"

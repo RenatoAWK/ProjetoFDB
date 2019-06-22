@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".gui.adm.BlocoRegisterAdm"></activity>
         <activity
             android:name=".gui.adm.Main_Adm_Activity"
             android:label="@string/title_activity_main_adm_"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".gui.adm.RegisterActivity" />
         <activity android:name=".gui.main.Network" />
         <activity android:name=".gui.main.LoginActivity">
