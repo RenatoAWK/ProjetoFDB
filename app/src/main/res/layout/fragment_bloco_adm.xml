@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     style="@style/_scrollview"
-    tools:context=".gui.adm.BlocoAdmFragment">
+    tools:context=".gui.adm.ui.main.PlaceholderFragment">
 
     <LinearLayout
         style="@style/_linearLayout">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/blocoRecyclerAdm"
-            style="@style/_recyclerView"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="Fragmento bloco"/>
 
     </LinearLayout>
+
+
+
 
 </ScrollView>

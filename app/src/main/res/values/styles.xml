@@ -50,13 +50,6 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="_buttonText" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:layout_gravity">center</item>
-        <item name="android:layout_margin">6dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-    </style>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -75,34 +68,6 @@
         <item name="android:textAlignment">center</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_marginBottom">50dp</item>
-    </style>
-
-    <style name="_recyclerView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-
-    <style name="_texto1ItemRecycler">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:maxLength">20</item>
-    </style>
-
-    <style name="_texto2ItemRecycler">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:maxLength">200</item>
-    </style>
-
-    <style name="_linearLayoutHorizontal">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:orientation">horizontal</item>
     </style>
 
 

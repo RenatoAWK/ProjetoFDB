@@ -3,7 +3,7 @@ package com.bsi.fbd.minisiga.modelo;
 public class Bloco {
     private int codigo;
     private String area;
-    private String tipo;
+    private int tipo;
     private String siglaFaculdade;
     private String nomeFaculdade;
 
@@ -23,11 +23,11 @@ public class Bloco {
         this.area = area;
     }
 
-    public String getTipo() {
+    public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
