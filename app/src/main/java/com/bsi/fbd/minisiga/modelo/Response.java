@@ -82,13 +82,43 @@ public class Response {
                                     adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
                                     setUpAdapter();
 
-                                } ///// escrever para os outros tipos
+                                } else if (tipo.equals("aluno")){
+
+                                    int qtd = jsonObject.getInt("qtd");
+                                    ArrayList<Aluno> resultado = new ArrayList<>();
+                                    for (int i = 0; i < qtd ; i++) {
+                                        JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                        Aluno aluno = new Aluno();
+                                        aluno.setCpf(item.getString("cpf"));
+                                        aluno.setNome(item.getString("nome"));
+                                        aluno.setEndereco(item.getString("endereco"));
+                                        aluno.setEmail(item.getString("email"));
+                                        aluno.setSenha(item.getString("senha"));
+                                        resultado.add(aluno);
+                                    }
+                                    adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                    setUpAdapter();
+
+                                } else if (tipo.equals("professor")){
+
+                                    int qtd = jsonObject.getInt("qtd");
+                                    ArrayList<Professor> resultado = new ArrayList<>();
+                                    for (int i = 0; i < qtd ; i++) {
+                                        JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                        Professor professor = new Professor();
+                                        professor.setCpf(item.getString("cpf"));
+                                        professor.setNome(item.getString("nome"));
+                                        professor.setEndereco(item.getString("endereco"));
+                                        professor.setEmail(item.getString("email"));
+                                        professor.setSenha(item.getString("senha"));
+                                        resultado.add(professor);
+                                    }
+                                    adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                    setUpAdapter();
 
 
-
-
-
-
+                                    
+                                }
 
                             } else {
                                 Toast.makeText(context.getApplicationContext(), "Operação realizada", Toast.LENGTH_LONG).show();
