@@ -45,7 +45,8 @@ public class Main_Adm_Activity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), AlunoRegisterAdm.class);
                     startActivity(intent);
                 } else if (position == 2) {
-                    /// cadastrar professor
+                    Intent intent = new Intent(getApplicationContext(), ProfessorRegisterAdm.class);
+                    startActivity(intent);
                 }
             }
         });
