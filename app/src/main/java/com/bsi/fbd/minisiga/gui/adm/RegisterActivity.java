@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         siglaLayout = findViewById(R.id.siglaLayoutRegister);
         nomeLayout = findViewById(R.id.nomeLayoutRegister);
         cidadeLayout = findViewById(R.id.cidadeLayoutRegister);
-        enderecoLayout = findViewById(R.id.enderecoLayoutRegister);
+        enderecoLayout = findViewById(R.id.enderecoLayoutRegisterAluno);
         emailLayout = findViewById(R.id.emailLayoutRegister);
         senhaLayout = findViewById(R.id.senhaLayoutRegister);
         requestQueue = Volley.newRequestQueue(this);

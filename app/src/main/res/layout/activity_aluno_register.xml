@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/_scrollview"
-    tools:context=".gui.adm.RegisterAluno">
+    tools:context=".gui.adm.AlunoRegisterAdm">
 
     <LinearLayout
         style="@style/_linearLayout">
@@ -12,19 +12,19 @@
             android:text="@string/student" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/cpfLayoutRegister"
+            android:id="@+id/cpfLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
-                android:hint="@string/CPF"
+                android:hint="@string/cpf"
                 android:inputType="text">
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nomeAlunoLayoutRegister"
+            android:id="@+id/nomeLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
@@ -34,7 +34,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enderecoAlunoLayoutRegister"
+            android:id="@+id/enderecoLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
@@ -44,7 +44,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailAlunoLayoutRegister"
+            android:id="@+id/emailLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
@@ -54,7 +54,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/senhaAlunoLayoutRegister"
+            android:id="@+id/senhaLayoutRegisterAluno"
             style="@style/_textInputLayoutOutlined">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
@@ -64,7 +64,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/cadastrarButtonRegister"
+            android:id="@+id/cadastrarButtonRegisterAluno"
             style="@style/_button"
             android:text="@string/save"
             android:onClick="salvar"/>

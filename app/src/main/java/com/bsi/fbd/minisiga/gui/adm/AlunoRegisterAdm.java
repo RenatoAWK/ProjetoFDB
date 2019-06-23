@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterAluno extends AppCompatActivity {
+public class AlunoRegisterAdm extends AppCompatActivity {
 
     private com.google.android.material.textfield.TextInputLayout cpfLayout;
     private com.google.android.material.textfield.TextInputLayout nomeLayout;
@@ -38,15 +38,15 @@ public class RegisterAluno extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_aluno);
+        setContentView(R.layout.activity_aluno_register);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        cpfLayout = findViewById(R.id.cpfLayoutRegister);
-        nomeLayout = findViewById(R.id.nomeAlunoLayoutRegister);
-        enderecoLayout = findViewById(R.id.enderecoAlunoLayoutRegister);
-        emailLayout = findViewById(R.id.emailAlunoLayoutRegister);
-        senhaLayout = findViewById(R.id.senhaAlunoLayoutRegister);
+        cpfLayout = findViewById(R.id.cpfLayoutRegisterAluno);
+        nomeLayout = findViewById(R.id.nomeLayoutRegisterAluno);
+        enderecoLayout = findViewById(R.id.enderecoLayoutRegisterAluno);
+        emailLayout = findViewById(R.id.emailLayoutRegisterAluno);
+        senhaLayout = findViewById(R.id.senhaLayoutRegisterAluno);
         requestQueue = Volley.newRequestQueue(this);
     }
 
@@ -115,7 +115,7 @@ public class RegisterAluno extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
-                        params.put("sigla",cpfLayout.getEditText().getText().toString().trim());
+                        params.put("cpf",cpfLayout.getEditText().getText().toString().trim());
                         params.put("nome",nomeLayout.getEditText().getText().toString().trim());
                         params.put("endereco",enderecoLayout.getEditText().getText().toString().trim());
                         params.put("email", emailLayout.getEditText().getText().toString().trim());
