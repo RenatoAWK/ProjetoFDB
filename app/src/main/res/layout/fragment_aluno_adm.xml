@@ -6,12 +6,10 @@
 
     <LinearLayout
         style="@style/_linearLayout">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="Fragmento bloco"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/alunoRecyclerAdm"
+            style="@style/_recyclerView"/>
 
     </LinearLayout>
-
 </ScrollView>

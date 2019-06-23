@@ -6,11 +6,11 @@
 
     <LinearLayout
         style="@style/_linearLayout">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="Fragmento professor"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/profRecyclerAdm"
+            style="@style/_recyclerView"/>
+
     </LinearLayout>
 
 </ScrollView>
