@@ -31,8 +31,9 @@ public class BlocoRegisterAdm extends AppCompatActivity {
     private com.google.android.material.textfield.TextInputLayout codigoLayout;
     private com.google.android.material.textfield.TextInputLayout areaLayout;
     private com.google.android.material.textfield.TextInputLayout tipoLayout;
-    private RequestQueue requestQueue;
     private Faculdade faculdade = (Faculdade) User.getCurrentUser();
+    private com.bsi.fbd.minisiga.modelo.Response response;
+
 
 
     @Override
@@ -47,7 +48,7 @@ public class BlocoRegisterAdm extends AppCompatActivity {
         areaLayout = findViewById(R.id.areaLayoutRegisterBloco);
         tipoLayout = findViewById(R.id.tipoLayoutRegisterBloco);
 
-        requestQueue = Volley.newRequestQueue(this);
+        response = new com.bsi.fbd.minisiga.modelo.Response("registerbloco.php",this);
 
 
     }
@@ -71,55 +72,13 @@ public class BlocoRegisterAdm extends AppCompatActivity {
 
 
         if (valido) {
-            if (Connection.getUrl() != null) {
+            Map<String, String> params = new HashMap<>();
+            params.put("codigo", codigoLayout.getEditText().getText().toString().trim());
+            params.put("area", areaLayout.getEditText().getText().toString().trim());
+            params.put("tipo", tipoLayout.getEditText().getText().toString().trim());
+            params.put("sigla_faculdade", faculdade.getSigla() );
+            response.run(params);
 
-                String url = Connection.getUrl() + "registerbloco.php";
-
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
-                            if (!error) {
-                                finish();
-                                Toast.makeText(getApplicationContext(), "Cadastro realizado", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Erro 1", Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Erro 2 ", Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                };
-
-                Response.ErrorListener errorListener = new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        String motivo = error.getMessage();
-                        Toast.makeText(getApplicationContext(), "Erro desconhecido: " + motivo, Toast.LENGTH_LONG).show();
-                    }
-                };
-
-                StringRequest stringRequest = new StringRequest(
-                        Request.Method.POST, url, responseListener, errorListener) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("codigo", codigoLayout.getEditText().getText().toString().trim());
-                        params.put("area", areaLayout.getEditText().getText().toString().trim());
-                        params.put("tipo", tipoLayout.getEditText().getText().toString().trim());
-                        params.put("sigla_faculdade", faculdade.getSigla() );
-                        return params;
-                    }
-                };
-
-                requestQueue.add(stringRequest);
-
-            } else {
-                Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.IP_required), Toast.LENGTH_LONG);
-            }
         }
     }
 }
