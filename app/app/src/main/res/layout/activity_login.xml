@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".gui.main.LoginActivity"
+    style="@style/_scrollview">
+
+    <LinearLayout
+        style="@style/_linearLayout">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="100dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo2" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayoutLogin"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/senhaLayoutLogin"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/password"
+                android:inputType="textPassword">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logarButtonLogin"
+            style="@style/_button"
+            android:text="@string/enter"
+            android:onClick="login"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cadastrarButtonLogin"
+            style="@style/_buttonOutlined"
+            android:text="@string/register_college"
+            android:onClick="registrarFaculdade"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/redeButtonLogin"
+            style="@style/_buttonOutlined"
+            android:text="@string/config_network"
+            android:onClick="configurarRede"/>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

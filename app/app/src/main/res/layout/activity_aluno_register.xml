@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/_scrollview"
+    tools:context=".gui.adm.AlunoRegisterAdm">
+
+    <LinearLayout
+        style="@style/_linearLayout">
+
+        <TextView
+            style="@style/_registerTitle"
+            android:text="@string/student" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/cpfLayoutRegisterAluno"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/cpf"
+                android:inputType="text">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nomeLayoutRegisterAluno"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/name"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enderecoLayoutRegisterAluno"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/address"
+                android:inputType="text|textMultiLine">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayoutRegisterAluno"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/senhaLayoutRegisterAluno"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/password"
+                android:inputType="textPassword">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cadastrarButtonRegisterAluno"
+            style="@style/_button"
+            android:text="@string/save"
+            android:onClick="salvar"/>
+
+    </LinearLayout>
+
+</ScrollView>

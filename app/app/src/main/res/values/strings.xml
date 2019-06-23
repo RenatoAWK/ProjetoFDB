@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Mini Siga</string>
+    <string name="initials_or_cpf">Sigla ou CPF</string>
+    <string name="password">Senha</string>
+    <string name="enter">Entrar</string>
+    <string name="register_college">Cadastrar faculdade</string>
+    <string name="config_network">Configurar rede</string>
+    <string name="text_explain_ip">Digite o IP do servidor com apenas números e pontos.\nLembre de certificar se o servidor está disnponível</string>
+    <string name="type_the_ip">Digite o IP</string>
+    <string name="invalid_ip">Ip inválido</string>
+    <string name="ip_saved">IP salvo</string>
+    <string name="college">Faculdade</string>
+    <string name="initials">Sigla</string>
+    <string name="name">Nome</string>
+    <string name="city">Cidade</string>
+    <string name="address">Endereço</string>
+    <string name="save">Salvar</string>
+    <string name="required_field">Campo obrigatório</string>
+    <string name="IP_required">Defina um IP nas configurações</string>
+    <string name="email">Email</string>
+    <string name="invalid_email">Email inválido</string>
+    <string name="title_activity_main_adm">MainAdmActivity</string>
+    <string name="blocks">Blocos</string>
+    <string name="teachers">Professores</string>
+    <string name="students">Alunos</string>
+    <string name="title_activity_main_adm_">Main_Adm_Activity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo">logo</string>
+    <string name="block">Bloco</string>
+    <string name="block_code">Código do bloco</string>
+    <string name="area">Área</string>
+    <string name="type">Tipo</string>
+    <string name="cpf">CPF</string>
+    <string name="student">Aluno</string>
+    <string name="teacher">Professor</string>
+</resources>
