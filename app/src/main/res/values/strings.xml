@@ -34,4 +34,6 @@
     <string name="type">Tipo</string>
     <string name="cpf">CPF</string>
     <string name="student">Aluno</string>
+    <string name="edit">Editar</string>
+    <string name="delete">Apagar</string>
 </resources>

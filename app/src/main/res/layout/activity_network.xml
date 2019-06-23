@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_marginTop="100dp"
-            android:src="@drawable/logo2"
+            android:src="@drawable/logo3"
             android:contentDescription="@string/logo" />
 
         <com.google.android.material.textfield.TextInputLayout
