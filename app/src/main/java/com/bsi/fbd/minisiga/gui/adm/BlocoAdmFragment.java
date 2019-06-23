@@ -59,6 +59,7 @@ public class BlocoAdmFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_bloco_adm, container, false);
         recyclerView = view.findViewById(R.id.blocoRecyclerAdm);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        resultado.clear();
         popular();
         return view;
     }

@@ -24,13 +24,6 @@ public class Main_Adm_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_adm_);
 
-        viewPager = findViewById(R.id.view_pager);
-        setUpViewPager(viewPager);
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-
-
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,4 +53,12 @@ public class Main_Adm_Activity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    @Override
+    protected void onStart() {
+        viewPager = findViewById(R.id.view_pager);
+        setUpViewPager(viewPager);
+        tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        super.onStart();
+    }
 }

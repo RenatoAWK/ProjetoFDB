@@ -85,18 +85,20 @@
     <style name="_texto1ItemRecycler">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">36sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:maxLength">20</item>
+        <item name="android:layout_marginStart">7dp</item>
     </style>
 
     <style name="_texto2ItemRecycler">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:maxLength">200</item>
+        <item name="android:layout_marginStart">7dp</item>
     </style>
 
     <style name="_linearLayoutHorizontal">
