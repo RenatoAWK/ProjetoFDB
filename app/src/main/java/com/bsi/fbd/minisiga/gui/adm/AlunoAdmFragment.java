@@ -4,7 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -15,12 +19,15 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bsi.fbd.minisiga.R;
+import com.bsi.fbd.minisiga.modelo.Bloco;
 import com.bsi.fbd.minisiga.modelo.Connection;
+import com.bsi.fbd.minisiga.modelo.Faculdade;
+import com.bsi.fbd.minisiga.modelo.Response;
+import com.bsi.fbd.minisiga.modelo.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,18 +38,33 @@ import java.util.Map;
 
 
 public class AlunoAdmFragment extends Fragment {
+    private ArrayList<Bloco> resultado = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private Context context;
+    private View view;
+
     public AlunoAdmFragment() {}
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onAttach(@NonNull Context context) {
+        this.context = context;
+        super.onAttach(context);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aluno_adm, container, false);
+        view = inflater.inflate(R.layout.fragment_aluno_adm, container, false);
+        recyclerView = view.findViewById(R.id.alunoRecyclerAdm);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        resultado.clear();
+        com.bsi.fbd.minisiga.modelo.Response response = new Response("getalunos.php", context, null, recyclerView);
+        Map<String, String> params = new HashMap<>();
+        Faculdade faculdade = (Faculdade) User.getCurrentUser();
+        params.put("sigla_faculdade",faculdade.getSigla());
+        response.run(params);
+        return view;
     }
 
 }
