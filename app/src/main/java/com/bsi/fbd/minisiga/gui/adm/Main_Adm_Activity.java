@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.bsi.fbd.minisiga.R;
+import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.AlunoAdmFragment;
+import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.BlocoAdmFragment;
+import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.ProfessorAdmFragment;
 import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.User;
 import com.bsi.fbd.minisiga.modelo.ViewPagerAdapter;

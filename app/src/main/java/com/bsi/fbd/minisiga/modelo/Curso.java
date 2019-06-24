@@ -1,6 +1,9 @@
 package com.bsi.fbd.minisiga.modelo;
 
-public class Curso {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Curso implements Parcelable {
     private int codigo;
     private String nome;
     private String sigla;
@@ -46,4 +49,41 @@ public class Curso {
     public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.codigo);
+        dest.writeString(this.nome);
+        dest.writeString(this.sigla);
+        dest.writeString(this.ramal);
+        dest.writeInt(this.duracao);
+    }
+
+    public Curso() {
+    }
+
+    protected Curso(Parcel in) {
+        this.codigo = in.readInt();
+        this.nome = in.readString();
+        this.sigla = in.readString();
+        this.ramal = in.readString();
+        this.duracao = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Curso> CREATOR = new Parcelable.Creator<Curso>() {
+        @Override
+        public Curso createFromParcel(Parcel source) {
+            return new Curso(source);
+        }
+
+        @Override
+        public Curso[] newArray(int size) {
+            return new Curso[size];
+        }
+    };
 }

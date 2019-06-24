@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/_scrollview"
-    tools:context=".gui.adm.AlunoAdmFragment">
+    tools:context=".gui.adm.fragmentos_main_adm_activity.AlunoAdmFragment">
 
     <LinearLayout
         style="@style/_linearLayout">

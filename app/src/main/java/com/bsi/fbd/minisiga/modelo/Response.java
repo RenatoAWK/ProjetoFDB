@@ -2,6 +2,7 @@ package com.bsi.fbd.minisiga.modelo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bsi.fbd.minisiga.R;
+import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.json.JSONException;
@@ -19,7 +21,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Response {
@@ -30,7 +31,6 @@ public class Response {
     private StringRequest stringRequest;
     private Context context;
     private JSONObject jsonObject;
-    private Activity edit;
     private RecyclerView recyclerView;
     private QuickAdapter adapter;
     private ArrayList<Object> resultado = new ArrayList<>();
@@ -44,11 +44,10 @@ public class Response {
         requestQueue = Volley.newRequestQueue(context);
         this.context = context;
     }
-    public Response(String php, final Context context, Activity edit, RecyclerView recyclerView){
+    public Response(String php, final Context context, RecyclerView recyclerView){
         this.url = Connection.getUrl() + php;
         requestQueue = Volley.newRequestQueue(context);
         this.context = context;
-        this.edit = edit;
         this.recyclerView = recyclerView;
     }
 
@@ -193,8 +192,23 @@ public class Response {
                 Faculdade faculdade = (Faculdade) User.getCurrentUser();
 
                 if (view.getId() == R.id.edit){
+                    Intent intent;
                     ////// mandar pra tela de edição
-                    Toast.makeText(context,"Clicou em editar", Toast.LENGTH_SHORT).show();
+                    if (item instanceof Bloco){
+                        intent = new Intent(context, BlocoEditAdm.class);
+                        intent.putExtra("bloco",(Bloco)item);
+                        context.startActivity(intent);
+                    } else if (item instanceof Aluno){
+                        //intent = new Intent(context, AlunoEditAdm.class);
+                        //intent.putExtra("aluno",(Aluno)item);
+                        //context.startActivity(intent);
+                    } else if (item instanceof Professor){
+                        //intent = new Intent(context, ProfessorEditAdm.class);
+                        //intent.putExtra("professor",(Professor) item);
+                        // context.startActivity(intent);
+                    }
+                    /////////////
+
                 } else {
                     ////// apagar
                     if (item instanceof Bloco){
@@ -216,6 +230,7 @@ public class Response {
                         params.put("cpf", professor.getCpf());
                         run(params);
                     }
+                    /////////////
 
                 }
             }

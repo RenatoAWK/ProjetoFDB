@@ -1,6 +1,9 @@
 package com.bsi.fbd.minisiga.modelo;
 
-public class Faculdade {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Faculdade implements Parcelable {
     private String sigla;
     private String nome;
     private String cidade;
@@ -64,4 +67,45 @@ public class Faculdade {
     public void setData(String data) {
         this.data = data;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.sigla);
+        dest.writeString(this.nome);
+        dest.writeString(this.cidade);
+        dest.writeString(this.endereco);
+        dest.writeString(this.senha);
+        dest.writeString(this.email);
+        dest.writeString(this.data);
+    }
+
+    public Faculdade() {
+    }
+
+    protected Faculdade(Parcel in) {
+        this.sigla = in.readString();
+        this.nome = in.readString();
+        this.cidade = in.readString();
+        this.endereco = in.readString();
+        this.senha = in.readString();
+        this.email = in.readString();
+        this.data = in.readString();
+    }
+
+    public static final Parcelable.Creator<Faculdade> CREATOR = new Parcelable.Creator<Faculdade>() {
+        @Override
+        public Faculdade createFromParcel(Parcel source) {
+            return new Faculdade(source);
+        }
+
+        @Override
+        public Faculdade[] newArray(int size) {
+            return new Faculdade[size];
+        }
+    };
 }

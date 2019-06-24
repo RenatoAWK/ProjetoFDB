@@ -1,4 +1,4 @@
-package com.bsi.fbd.minisiga.gui.adm;
+package com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity;
 
 import android.content.Context;
 import android.net.Uri;
@@ -46,7 +46,7 @@ public class ProfessorAdmFragment extends Fragment {
         recyclerView = view.findViewById(R.id.profRecyclerAdm);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         resultado.clear();
-        com.bsi.fbd.minisiga.modelo.Response response = new Response("getprofessores.php", context, null, recyclerView);
+        com.bsi.fbd.minisiga.modelo.Response response = new Response("getprofessores.php", context, recyclerView);
         Map<String, String> params = new HashMap<>();
         Faculdade faculdade = (Faculdade) User.getCurrentUser();
         params.put("sigla_faculdade",faculdade.getSigla());

@@ -1,6 +1,9 @@
 package com.bsi.fbd.minisiga.modelo;
 
-public class Professor {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Professor implements Parcelable {
     private String cpf;
     private String nome;
     private String endereco;
@@ -55,4 +58,43 @@ public class Professor {
     public void setSiglaFaculdade(String siglaFaculdade) {
         this.siglaFaculdade = siglaFaculdade;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.cpf);
+        dest.writeString(this.nome);
+        dest.writeString(this.endereco);
+        dest.writeString(this.email);
+        dest.writeString(this.senha);
+        dest.writeString(this.siglaFaculdade);
+    }
+
+    public Professor() {
+    }
+
+    protected Professor(Parcel in) {
+        this.cpf = in.readString();
+        this.nome = in.readString();
+        this.endereco = in.readString();
+        this.email = in.readString();
+        this.senha = in.readString();
+        this.siglaFaculdade = in.readString();
+    }
+
+    public static final Parcelable.Creator<Professor> CREATOR = new Parcelable.Creator<Professor>() {
+        @Override
+        public Professor createFromParcel(Parcel source) {
+            return new Professor(source);
+        }
+
+        @Override
+        public Professor[] newArray(int size) {
+            return new Professor[size];
+        }
+    };
 }

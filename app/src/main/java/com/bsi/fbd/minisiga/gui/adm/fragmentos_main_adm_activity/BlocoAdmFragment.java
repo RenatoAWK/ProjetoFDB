@@ -1,4 +1,4 @@
-package com.bsi.fbd.minisiga.gui.adm;
+package com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.bsi.fbd.minisiga.R;
+import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
 import com.bsi.fbd.minisiga.modelo.Bloco;
 import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.Response;
@@ -41,7 +42,7 @@ public class BlocoAdmFragment extends Fragment {
         recyclerView = view.findViewById(R.id.blocoRecyclerAdm);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         resultado.clear();
-        Response response = new Response("getblocos.php", context, null, recyclerView);
+        Response response = new Response("getblocos.php", context, recyclerView);
         Map<String, String> params = new HashMap<>();
         Faculdade faculdade = (Faculdade) User.getCurrentUser();
         params.put("sigla_faculdade",faculdade.getSigla());
