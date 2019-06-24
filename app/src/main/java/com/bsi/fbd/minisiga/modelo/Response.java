@@ -13,7 +13,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bsi.fbd.minisiga.R;
+import com.bsi.fbd.minisiga.gui.adm.AlunoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.json.JSONException;
@@ -199,13 +201,13 @@ public class Response {
                         intent.putExtra("bloco",(Bloco)item);
                         context.startActivity(intent);
                     } else if (item instanceof Aluno){
-                        //intent = new Intent(context, AlunoEditAdm.class);
-                        //intent.putExtra("aluno",(Aluno)item);
-                        //context.startActivity(intent);
+                        intent = new Intent(context, AlunoEditAdm.class);
+                        intent.putExtra("aluno",(Aluno)item);
+                        context.startActivity(intent);
                     } else if (item instanceof Professor){
-                        //intent = new Intent(context, ProfessorEditAdm.class);
-                        //intent.putExtra("professor",(Professor) item);
-                        // context.startActivity(intent);
+                        intent = new Intent(context, ProfessorEditAdm.class);
+                        intent.putExtra("professor",(Professor) item);
+                         context.startActivity(intent);
                     }
                     /////////////
 
