@@ -1,15 +1,15 @@
 package com.bsi.fbd.minisiga.modelo;
 
 public class Conteudo {
-    private String nome;
+    private String item;
     private int cargaHoraria;
 
-    public String getNome() {
-        return nome;
+    public String getItem() {
+        return item;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setItem(String item) {
+        this.item = item;
     }
 
     public int getCargaHoraria() {

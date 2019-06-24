@@ -31,9 +31,7 @@ public class ProfessorAdmFragment extends Fragment {
     private Context context;
     private View view;
 
-    public ProfessorAdmFragment() {
-        // Required empty public constructor
-    }
+    public ProfessorAdmFragment() {}
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -48,7 +46,7 @@ public class ProfessorAdmFragment extends Fragment {
         recyclerView = view.findViewById(R.id.profRecyclerAdm);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         resultado.clear();
-        com.bsi.fbd.minisiga.modelo.Response response = new Response("getprofessor.php", context, null, recyclerView);
+        com.bsi.fbd.minisiga.modelo.Response response = new Response("getprofessores.php", context, null, recyclerView);
         Map<String, String> params = new HashMap<>();
         Faculdade faculdade = (Faculdade) User.getCurrentUser();
         params.put("sigla_faculdade",faculdade.getSigla());

@@ -2,12 +2,9 @@ package com.bsi.fbd.minisiga.modelo;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -69,54 +66,59 @@ public class Response {
                                 if (tipo.equals("bloco")){
 
                                     int qtd = jsonObject.getInt("qtd");
-                                    ArrayList<Bloco> resultado = new ArrayList<>();
-                                    for (int i = 0; i < qtd ; i++) {
-                                        JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                        Bloco bloco = new Bloco();
-                                        bloco.setSiglaFaculdade(item.getString("sigla_faculdade"));
-                                        bloco.setArea(item.getString("area"));
-                                        bloco.setCodigo(Integer.parseInt(item.getString("codigo")));
-                                        bloco.setTipo(item.getString("tipo"));
-                                        resultado.add(bloco);
+                                    if (qtd > 0){
+                                        ArrayList<Bloco> resultado = new ArrayList<>();
+                                        for (int i = 0; i < qtd ; i++) {
+                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                            Bloco bloco = new Bloco();
+                                            bloco.setSiglaFaculdade(item.getString("sigla_faculdade"));
+                                            bloco.setArea(item.getString("area"));
+                                            bloco.setCodigo(Integer.parseInt(item.getString("codigo")));
+                                            bloco.setTipo(item.getString("tipo"));
+                                            resultado.add(bloco);
+                                        }
+                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                        setUpAdapter();
                                     }
-                                    adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                    setUpAdapter();
 
                                 } else if (tipo.equals("aluno")){
 
                                     int qtd = jsonObject.getInt("qtd");
-                                    ArrayList<Aluno> resultado = new ArrayList<>();
-                                    for (int i = 0; i < qtd ; i++) {
-                                        JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                        Aluno aluno = new Aluno();
-                                        aluno.setCpf(item.getString("cpf"));
-                                        aluno.setNome(item.getString("nome"));
-                                        aluno.setEndereco(item.getString("endereco"));
-                                        aluno.setEmail(item.getString("email"));
-                                        aluno.setSenha(item.getString("senha"));
-                                        resultado.add(aluno);
+                                    if (qtd > 0){
+                                        ArrayList<Aluno> resultado = new ArrayList<>();
+                                        for (int i = 0; i < qtd ; i++) {
+                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                            Aluno aluno = new Aluno();
+                                            aluno.setCpf(item.getString("cpf"));
+                                            aluno.setNome(item.getString("nome"));
+                                            aluno.setEndereco(item.getString("endereco"));
+                                            aluno.setEmail(item.getString("email"));
+                                            aluno.setSenha(item.getString("senha"));
+                                            resultado.add(aluno);
+                                        }
+                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                        setUpAdapter();
                                     }
-                                    adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                    setUpAdapter();
+
 
                                 } else if (tipo.equals("professor")){
 
                                     int qtd = jsonObject.getInt("qtd");
-                                    ArrayList<Professor> resultado = new ArrayList<>();
-                                    for (int i = 0; i < qtd ; i++) {
-                                        JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                        Professor professor = new Professor();
-                                        professor.setCpf(item.getString("cpf"));
-                                        professor.setNome(item.getString("nome"));
-                                        professor.setEndereco(item.getString("endereco"));
-                                        professor.setEmail(item.getString("email"));
-                                        professor.setSenha(item.getString("senha"));
-                                        resultado.add(professor);
+                                    if (qtd > 0){
+                                        ArrayList<Professor> resultado = new ArrayList<>();
+                                        for (int i = 0; i < qtd ; i++) {
+                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                            Professor professor = new Professor();
+                                            professor.setCpf(item.getString("cpf"));
+                                            professor.setNome(item.getString("nome"));
+                                            professor.setEndereco(item.getString("endereco"));
+                                            professor.setEmail(item.getString("email"));
+                                            professor.setSenha(item.getString("senha"));
+                                            resultado.add(professor);
+                                        }
+                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                        setUpAdapter();
                                     }
-                                    adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                    setUpAdapter();
-
-
                                     
                                 }
 
@@ -127,7 +129,7 @@ public class Response {
                             Toast.makeText(context.getApplicationContext(), "Erro 1", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(context.getApplicationContext(), "Erro 2 ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context.getApplicationContext(), "Erro 2 "+e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
                 }

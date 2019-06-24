@@ -14,7 +14,7 @@
         android:theme="@style/_AppTheme_Tabbed">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/titleMainAdm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

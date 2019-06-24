@@ -7,6 +7,7 @@ public class Faculdade {
     private String endereco;
     private String senha;
     private String email;
+    private String data;
 
     public String getSigla() {
         return sigla;
@@ -54,5 +55,13 @@ public class Faculdade {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

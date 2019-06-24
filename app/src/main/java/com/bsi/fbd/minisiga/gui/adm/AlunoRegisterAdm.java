@@ -12,6 +12,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.modelo.Connection;
+import com.bsi.fbd.minisiga.modelo.Faculdade;
+import com.bsi.fbd.minisiga.modelo.User;
 
 import android.os.Bundle;
 import android.util.Patterns;
@@ -32,8 +34,8 @@ public class AlunoRegisterAdm extends AppCompatActivity {
     private com.google.android.material.textfield.TextInputLayout enderecoLayout;
     private com.google.android.material.textfield.TextInputLayout emailLayout;
     private com.google.android.material.textfield.TextInputLayout senhaLayout;
-
-    private RequestQueue requestQueue;
+    private com.bsi.fbd.minisiga.modelo.Response response;
+    private Faculdade faculdade =(Faculdade) User.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,9 @@ public class AlunoRegisterAdm extends AppCompatActivity {
         enderecoLayout = findViewById(R.id.enderecoLayoutRegisterAluno);
         emailLayout = findViewById(R.id.emailLayoutRegisterAluno);
         senhaLayout = findViewById(R.id.senhaLayoutRegisterAluno);
-        requestQueue = Volley.newRequestQueue(this);
+
+        response = new com.bsi.fbd.minisiga.modelo.Response("registeraluno.php",this);
+
     }
 
     public void salvar(View view) {
@@ -77,58 +81,14 @@ public class AlunoRegisterAdm extends AppCompatActivity {
 
 
         if (valido){
-            if (Connection.getUrl() != null){
-
-                String url = Connection.getUrl()+"registeraluno.php"; // Completa com o ip já salvo
-
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    // Chama quando consegue uma resposta
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
-                            if (!error) {
-                                finish();
-                                Toast.makeText(getApplicationContext(), "Cadastro realizado", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Erro 1", Toast.LENGTH_LONG).show();
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(getApplicationContext(), "Erro 2 ", Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-                };
-
-                Response.ErrorListener errorListener = new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        String motivo = error.getMessage();
-                        Toast.makeText(getApplicationContext(), "Erro desconhecido: "+motivo, Toast.LENGTH_LONG).show();
-                    }
-                };
-
-                StringRequest stringRequest = new StringRequest(
-                        Request.Method.POST, url, responseListener, errorListener)
-                {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("cpf",cpfLayout.getEditText().getText().toString().trim());
-                        params.put("nome",nomeLayout.getEditText().getText().toString().trim());
-                        params.put("endereco",enderecoLayout.getEditText().getText().toString().trim());
-                        params.put("email", emailLayout.getEditText().getText().toString().trim());
-                        params.put("senha", senhaLayout.getEditText().getText().toString().trim());
-                        return params;
-                    }
-                };
-
-                requestQueue.add(stringRequest);
-
-            } else {
-                Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.IP_required), Toast.LENGTH_LONG);
-            }
+            Map<String, String> params = new HashMap<>();
+            params.put("cpf", cpfLayout.getEditText().getText().toString().trim());
+            params.put("nome", nomeLayout.getEditText().getText().toString().trim());
+            params.put("endereco", enderecoLayout.getEditText().getText().toString().trim());
+            params.put("senha", senhaLayout.getEditText().getText().toString().trim() );
+            params.put("email", emailLayout.getEditText().getText().toString().trim() );
+            params.put("sigla_faculdade", faculdade.getSigla());
+            response.run(params);
 
         }
 

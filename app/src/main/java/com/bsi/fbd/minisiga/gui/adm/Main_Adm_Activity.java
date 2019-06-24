@@ -3,6 +3,8 @@ package com.bsi.fbd.minisiga.gui.adm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
 import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.User;
@@ -18,11 +20,15 @@ public class Main_Adm_Activity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_adm_);
+
+        title = findViewById(R.id.titleMainAdm);
+        title.setText(faculdade.getSigla());
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

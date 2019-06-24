@@ -6,13 +6,10 @@
 
     <LinearLayout
         style="@style/_linearLayout">
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/logo3"
-            android:contentDescription="@string/logo" />
+
+        <TextView
+            style="@style/_registerTitle"
+            android:text="@string/mini_siga"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ipLayoutNetwork"

@@ -6,6 +6,7 @@ public class RecursoDidatico {
     private String descricao;
     private String data;
     private String horario;
+    private String cpfProfessor;
 
     public int getCodigo() {
         return codigo;
@@ -45,5 +46,13 @@ public class RecursoDidatico {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public String getCpfProfessor() {
+        return cpfProfessor;
+    }
+
+    public void setCpfProfessor(String cpfProfessor) {
+        this.cpfProfessor = cpfProfessor;
     }
 }

@@ -1,7 +1,5 @@
 package com.bsi.fbd.minisiga.modelo;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.bsi.fbd.minisiga.R;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -31,7 +29,7 @@ public class QuickAdapter extends BaseQuickAdapter<Object, BaseViewHolder> {
                 texto2 = professor.getEmail();
         } else if (item instanceof Conteudo){
                 Conteudo conteudo = (Conteudo) item;
-                texto1 = conteudo.getNome();
+                texto1 = conteudo.getItem();
                 texto2 = String.valueOf(conteudo.getCargaHoraria());
         } else if (item instanceof Curso){
                 Curso curso = (Curso) item;
@@ -49,7 +47,7 @@ public class QuickAdapter extends BaseQuickAdapter<Object, BaseViewHolder> {
                 Sala sala = (Sala) item;
                 texto1 = String.valueOf(sala.getNumero());
                 texto2= sala.getArea();
-        } else if (item instanceof Sala){
+        } else if (item instanceof Turma){
                 Turma turma = (Turma) item;
                 texto1 = String.valueOf(turma.getCodigo());
                 texto2 = String.valueOf(turma.getAno());

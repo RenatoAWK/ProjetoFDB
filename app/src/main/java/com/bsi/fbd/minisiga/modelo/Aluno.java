@@ -1,13 +1,12 @@
 package com.bsi.fbd.minisiga.modelo;
 
-import java.util.List;
-
 public class Aluno {
     private String cpf;
     private String nome;
     private String endereco;
     private String email;
     private String senha;
+    private String siglaFaculdade;
 
     public String getCpf() {
         return cpf;
@@ -48,5 +47,13 @@ public class Aluno {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSiglaFaculdade() {
+        return siglaFaculdade;
+    }
+
+    public void setSiglaFaculdade(String siglaFaculdade) {
+        this.siglaFaculdade = siglaFaculdade;
     }
 }

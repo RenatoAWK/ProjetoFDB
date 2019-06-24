@@ -6,6 +6,7 @@ public class Professor {
     private String endereco;
     private String email;
     private String senha;
+    private String siglaFaculdade;
 
     public String getCpf() {
         return cpf;
@@ -45,5 +46,13 @@ public class Professor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSiglaFaculdade() {
+        return siglaFaculdade;
+    }
+
+    public void setSiglaFaculdade(String siglaFaculdade) {
+        this.siglaFaculdade = siglaFaculdade;
     }
 }

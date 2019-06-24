@@ -5,7 +5,6 @@ public class Bloco {
     private String area;
     private String tipo;
     private String siglaFaculdade;
-    private String nomeFaculdade;
 
     public int getCodigo() {
         return codigo;
@@ -37,13 +36,5 @@ public class Bloco {
 
     public void setSiglaFaculdade(String siglaFaculdade) {
         this.siglaFaculdade = siglaFaculdade;
-    }
-
-    public String getNomeFaculdade() {
-        return nomeFaculdade;
-    }
-
-    public void setNomeFaculdade(String nomeFaculdade) {
-        this.nomeFaculdade = nomeFaculdade;
     }
 }

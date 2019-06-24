@@ -2,9 +2,8 @@ package com.bsi.fbd.minisiga.modelo;
 
 public class Turma {
     private int codigo;
-    private int ano;
+    private String ano;
     private String siglaFaculdade;
-    private String nomeFaculdade;
     private int codigoBloco;
     private int numeroSala;
     private int codigoCurso;
@@ -17,11 +16,11 @@ public class Turma {
         this.codigo = codigo;
     }
 
-    public int getAno() {
+    public String getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(String ano) {
         this.ano = ano;
     }
 
@@ -31,14 +30,6 @@ public class Turma {
 
     public void setSiglaFaculdade(String siglaFaculdade) {
         this.siglaFaculdade = siglaFaculdade;
-    }
-
-    public String getNomeFaculdade() {
-        return nomeFaculdade;
-    }
-
-    public void setNomeFaculdade(String nomeFaculdade) {
-        this.nomeFaculdade = nomeFaculdade;
     }
 
     public int getCodigoBloco() {
