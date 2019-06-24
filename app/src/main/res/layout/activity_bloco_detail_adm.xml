@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/_scrollview"
+    tools:context=".gui.adm.BlocoDetailAdm">
+
+    <LinearLayout
+        style="@style/_linearLayout">
+
+        <TextView
+            android:text="@string/block"
+            style="@style/_registerTitle" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codigoLayoutDetailBloco"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/block_code"
+                android:inputType="number"
+                android:maxLength="6"
+                android:focusable="false">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/areaLayoutDetailBloco"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/area"
+                android:inputType="text"
+                android:maxLength="150"
+                android:focusable="false">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tipoLayoutDetailBloco"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/type"
+                android:inputType="text"
+                android:maxLength="150"
+                android:focusable="false">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
