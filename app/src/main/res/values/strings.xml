@@ -38,4 +38,5 @@
     <string name="delete">Apagar</string>
     <string name="teacher">Professor</string>
     <string name="mini_siga">Mini Siga</string>
+    <string name="date_implementation">Data de implantação</string>
 </resources>

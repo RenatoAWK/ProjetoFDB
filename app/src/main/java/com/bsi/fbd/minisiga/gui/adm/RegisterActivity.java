@@ -3,9 +3,11 @@ package com.bsi.fbd.minisiga.gui.adm;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,8 +23,11 @@ import com.bsi.fbd.minisiga.modelo.Connection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -33,8 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
     private com.google.android.material.textfield.TextInputLayout enderecoLayout;
     private com.google.android.material.textfield.TextInputLayout emailLayout;
     private com.google.android.material.textfield.TextInputLayout senhaLayout;
-
+    private com.google.android.material.textfield.TextInputLayout dataLayout;
     private RequestQueue requestQueue;
+    private Calendar myCalendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +53,44 @@ public class RegisterActivity extends AppCompatActivity {
         siglaLayout = findViewById(R.id.siglaLayoutRegister);
         nomeLayout = findViewById(R.id.nomeLayoutRegister);
         cidadeLayout = findViewById(R.id.cidadeLayoutRegister);
-        enderecoLayout = findViewById(R.id.enderecoLayoutRegisterAluno);
+        enderecoLayout = findViewById(R.id.enderecoLayoutRegister);
         emailLayout = findViewById(R.id.emailLayoutRegister);
         senhaLayout = findViewById(R.id.senhaLayoutRegister);
+        dataLayout = findViewById(R.id.dataLayoutRegister);
         requestQueue = Volley.newRequestQueue(this);
 
+        myCalendar = Calendar.getInstance();
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+        dataLayout.getEditText().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(RegisterActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        dataLayout.getEditText().setFocusable(false);
+
+
+    }
+
+    private void updateLabel() {
+
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, new Locale("pt","BR"));
+        dataLayout.getEditText().setText(sdf.format(myCalendar.getTime()));
     }
 
 
@@ -63,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
         list.add (enderecoLayout);
         list.add(emailLayout);
         list.add (senhaLayout);
+        list.add (dataLayout);
         for (Object object: list){
             com.google.android.material.textfield.TextInputLayout textInputLayout = (com.google.android.material.textfield.TextInputLayout)object;
             if (textInputLayout.getEditText().getText().toString().isEmpty()){
@@ -126,6 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 params.put("endereco",enderecoLayout.getEditText().getText().toString().trim());
                                 params.put("email", emailLayout.getEditText().getText().toString().trim());
                                 params.put("senha", senhaLayout.getEditText().getText().toString().trim());
+                                params.put("data_implantacao", myCalendar.get(Calendar.YEAR)+"-"+myCalendar.get(Calendar.MONTH)+"-"+myCalendar.get(Calendar.DAY_OF_MONTH));
                                 return params;
                             }
                         };
