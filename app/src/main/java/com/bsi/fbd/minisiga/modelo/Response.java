@@ -18,6 +18,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Response {
@@ -31,6 +33,10 @@ public class Response {
     private Activity edit;
     private RecyclerView recyclerView;
     private QuickAdapter adapter;
+    private ArrayList<Object> resultado = new ArrayList<>();
+    private Integer positionItem = null;
+    private String urlDelete;
+
 
 
     public Response(String php, final Context context) {
@@ -46,10 +52,6 @@ public class Response {
         this.recyclerView = recyclerView;
     }
 
-    public JSONObject getJsonObject() {
-        return jsonObject;
-    }
-
     public void run(final Map<String, String> params){
 
         if (Connection.getUrl() != null) {
@@ -62,65 +64,73 @@ public class Response {
                         boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
                         if (!error) {
                             if (recyclerView != null){
-                                String tipo = jsonObject.getString("tipo");
-                                if (tipo.equals("bloco")){
+                                if (positionItem != null && urlDelete != null){ //Se chegou aqui, quer dizer que está apagando
+                                    resultado.remove(resultado.get(positionItem));
+                                    recyclerView.getAdapter().notifyItemRemoved(positionItem);
+                                    positionItem = null;
+                                    urlDelete = null;
+                                } else { ///Se chegou aqui, quer dizer que vai retornar
 
-                                    int qtd = jsonObject.getInt("qtd");
-                                    if (qtd > 0){
-                                        ArrayList<Bloco> resultado = new ArrayList<>();
-                                        for (int i = 0; i < qtd ; i++) {
-                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                            Bloco bloco = new Bloco();
-                                            bloco.setSiglaFaculdade(item.getString("sigla_faculdade"));
-                                            bloco.setArea(item.getString("area"));
-                                            bloco.setCodigo(Integer.parseInt(item.getString("codigo")));
-                                            bloco.setTipo(item.getString("tipo"));
-                                            resultado.add(bloco);
+                                    String tipo = jsonObject.getString("tipo");
+                                    if (tipo.equals("bloco")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Bloco bloco = new Bloco();
+                                                bloco.setSiglaFaculdade(item.getString("sigla_faculdade"));
+                                                bloco.setArea(item.getString("area"));
+                                                bloco.setCodigo(Integer.parseInt(item.getString("codigo")));
+                                                bloco.setTipo(item.getString("tipo"));
+                                                resultado.add(bloco);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
                                         }
-                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                        setUpAdapter();
+
+                                    } else if (tipo.equals("aluno")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Aluno aluno = new Aluno();
+                                                aluno.setCpf(item.getString("cpf"));
+                                                aluno.setNome(item.getString("nome"));
+                                                aluno.setEndereco(item.getString("endereco"));
+                                                aluno.setEmail(item.getString("email"));
+                                                aluno.setSenha(item.getString("senha"));
+                                                resultado.add(aluno);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
+                                        }
+
+
+                                    } else if (tipo.equals("professor")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Professor professor = new Professor();
+                                                professor.setCpf(item.getString("cpf"));
+                                                professor.setNome(item.getString("nome"));
+                                                professor.setEndereco(item.getString("endereco"));
+                                                professor.setEmail(item.getString("email"));
+                                                professor.setSenha(item.getString("senha"));
+                                                resultado.add(professor);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
+                                        }
+
                                     }
 
-                                } else if (tipo.equals("aluno")){
 
-                                    int qtd = jsonObject.getInt("qtd");
-                                    if (qtd > 0){
-                                        ArrayList<Aluno> resultado = new ArrayList<>();
-                                        for (int i = 0; i < qtd ; i++) {
-                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                            Aluno aluno = new Aluno();
-                                            aluno.setCpf(item.getString("cpf"));
-                                            aluno.setNome(item.getString("nome"));
-                                            aluno.setEndereco(item.getString("endereco"));
-                                            aluno.setEmail(item.getString("email"));
-                                            aluno.setSenha(item.getString("senha"));
-                                            resultado.add(aluno);
-                                        }
-                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                        setUpAdapter();
-                                    }
-
-
-                                } else if (tipo.equals("professor")){
-
-                                    int qtd = jsonObject.getInt("qtd");
-                                    if (qtd > 0){
-                                        ArrayList<Professor> resultado = new ArrayList<>();
-                                        for (int i = 0; i < qtd ; i++) {
-                                            JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
-                                            Professor professor = new Professor();
-                                            professor.setCpf(item.getString("cpf"));
-                                            professor.setNome(item.getString("nome"));
-                                            professor.setEndereco(item.getString("endereco"));
-                                            professor.setEmail(item.getString("email"));
-                                            professor.setSenha(item.getString("senha"));
-                                            resultado.add(professor);
-                                        }
-                                        adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
-                                        setUpAdapter();
-                                    }
-                                    
                                 }
+
 
                             } else {
                                 Toast.makeText(context.getApplicationContext(), "Operação realizada", Toast.LENGTH_LONG).show();
@@ -142,14 +152,24 @@ public class Response {
                     Toast.makeText(context.getApplicationContext(), "Erro desconhecido: " + motivo, Toast.LENGTH_LONG).show();
                 }
             };
+            if (urlDelete == null){
+                stringRequest = new StringRequest(
+                        Request.Method.POST, url, responseListener, errorListener) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        return params;
+                    }
+                };
+            } else {
+                stringRequest = new StringRequest(
+                        Request.Method.POST, urlDelete, responseListener, errorListener) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        return params;
+                    }
+                };
 
-            stringRequest = new StringRequest(
-                    Request.Method.POST, url, responseListener, errorListener) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    return params;
-                }
-            };
+            }
             requestQueue.add(stringRequest);
         } else {
             Toast.makeText(context.getApplicationContext(), context.getApplicationContext().getString(R.string.IP_required), Toast.LENGTH_LONG);
@@ -167,12 +187,36 @@ public class Response {
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                positionItem = position;
+                Object item = resultado.get(position);
+                Map<String, String> params = new HashMap<>();
+                Faculdade faculdade = (Faculdade) User.getCurrentUser();
+
                 if (view.getId() == R.id.edit){
                     ////// mandar pra tela de edição
                     Toast.makeText(context,"Clicou em editar", Toast.LENGTH_SHORT).show();
                 } else {
                     ////// apagar
-                    Toast.makeText(context,"Clicou em apagar", Toast.LENGTH_SHORT).show();
+                    if (item instanceof Bloco){
+                        urlDelete = Connection.getUrl() + "deletebloco.php";
+                        Bloco bloco = (Bloco) item;
+                        params.put("sigla_faculdade",faculdade.getSigla());
+                        params.put("codigo",String.valueOf(bloco.getCodigo()));
+                        run(params);
+                    } else if (item instanceof Aluno){
+                        urlDelete = Connection.getUrl() + "deletealuno.php";
+                        Aluno aluno = (Aluno) item;
+                        params.put("sigla_faculdade",faculdade.getSigla());
+                        params.put("cpf",aluno.getCpf());
+                        run(params);
+                    } else if (item instanceof Professor) {
+                        urlDelete = Connection.getUrl() + "deleteprofessor.php";
+                        Professor professor = (Professor) item;
+                        params.put("sigla_faculdade", faculdade.getSigla());
+                        params.put("cpf", professor.getCpf());
+                        run(params);
+                    }
+
                 }
             }
         });
