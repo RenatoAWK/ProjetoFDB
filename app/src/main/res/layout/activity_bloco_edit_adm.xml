@@ -19,7 +19,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/block_code"
-                android:inputType="number">
+                android:inputType="number"
+                android:maxLength="6">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -29,7 +30,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/area"
-                android:inputType="text">
+                android:inputType="text"
+                android:maxLength="150">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,7 +41,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/type"
-                android:inputType="text">
+                android:inputType="text"
+                android:maxLength="150">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 

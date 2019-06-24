@@ -19,7 +19,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/cpf"
-                android:inputType="text">
+                android:inputType="number"
+                android:maxLength="11">
 
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
@@ -30,7 +31,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/name"
-                android:inputType="text">
+                android:inputType="text"
+                android:maxLength="150">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,7 +42,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/address"
-                android:inputType="text|textMultiLine">
+                android:inputType="text|textMultiLine"
+                android:maxLength="250">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,7 +53,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/email"
-                android:inputType="textEmailAddress">
+                android:inputType="textEmailAddress"
+                android:maxLength="150">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +64,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/_textInputEdit"
                 android:hint="@string/password"
-                android:inputType="textPassword">
+                android:inputType="textPassword"
+                android:maxLength="150">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
