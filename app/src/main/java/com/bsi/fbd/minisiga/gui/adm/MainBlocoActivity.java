@@ -45,12 +45,14 @@ public class MainBlocoActivity extends AppCompatActivity {
                 int position = tabLayout.getSelectedTabPosition();
                 if (position == 0) {
                     /// cadastrar sala
-                    //ntent intent = new Intent(getApplicationContext(), SalaRegisterAdm.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), SalaRegisterAdm.class);
+                    intent.putExtra("bloco",bloco);
+                    startActivity(intent);
                 } else if (position == 1) {
                     /// cadastrar curso
-                    //Intent intent = new Intent(getApplicationContext(), CursoRegisterAdm.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), CursoRegisterAdm.class);
+                    intent.putExtra("bloco",bloco);
+                    startActivity(intent);
                 }
             }
         });

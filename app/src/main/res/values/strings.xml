@@ -41,4 +41,8 @@
     <string name="date_implementation">Data de implantação</string>
     <string name="room">Sala</string>
     <string name="room_number">Numero da sala</string>
+    <string name="course">Curso</string>
+    <string name="course_code">Código do curso</string>
+    <string name="course_duration">Duração do curso</string>
+    <string name="ramal">Ramal</string>
 </resources>
