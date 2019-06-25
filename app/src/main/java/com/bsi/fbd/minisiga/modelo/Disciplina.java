@@ -7,6 +7,7 @@ public class Disciplina implements Parcelable {
     private int codigo;
     private int cargaHoraria;
     private String nome;
+    private String sigla_faculdade;
 
     public int getCodigo() {
         return codigo;
@@ -32,6 +33,15 @@ public class Disciplina implements Parcelable {
         this.nome = nome;
     }
 
+    public String getSigla_faculdade() {
+        return sigla_faculdade;
+    }
+
+    public void setSigla_faculdade(String sigla_faculdade) {
+        this.sigla_faculdade = sigla_faculdade;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -42,6 +52,7 @@ public class Disciplina implements Parcelable {
         dest.writeInt(this.codigo);
         dest.writeInt(this.cargaHoraria);
         dest.writeString(this.nome);
+        dest.writeString(this.sigla_faculdade);
     }
 
     public Disciplina() {
@@ -51,9 +62,10 @@ public class Disciplina implements Parcelable {
         this.codigo = in.readInt();
         this.cargaHoraria = in.readInt();
         this.nome = in.readString();
+        this.sigla_faculdade = in.readString();
     }
 
-    public static final Parcelable.Creator<Disciplina> CREATOR = new Parcelable.Creator<Disciplina>() {
+    public static final Creator<Disciplina> CREATOR = new Creator<Disciplina>() {
         @Override
         public Disciplina createFromParcel(Parcel source) {
             return new Disciplina(source);

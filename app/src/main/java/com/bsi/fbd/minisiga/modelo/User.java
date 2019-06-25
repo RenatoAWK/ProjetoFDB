@@ -2,6 +2,7 @@ package com.bsi.fbd.minisiga.modelo;
 
 public class User {
     private static Object currentUser;
+    private static Bloco bloco;
 
     public static Object getCurrentUser() {
         return currentUser;
@@ -21,5 +22,13 @@ public class User {
         } else {
             return null;
         }
+    }
+
+    public static Bloco getBloco() {
+        return bloco;
+    }
+
+    public static void setBloco(Bloco bloco) {
+        User.bloco = bloco;
     }
 }

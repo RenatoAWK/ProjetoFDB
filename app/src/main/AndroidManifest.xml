@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.BlocoDetailAdm"></activity>
+        <activity android:name=".gui.adm.MainBlocoActivity"></activity>
+        <activity android:name=".gui.adm.BlocoDetailAdm" />
         <activity android:name=".gui.adm.ProfessorDetailAdm" />
         <activity android:name=".gui.adm.AlunoDetailAdm" />
         <activity android:name=".gui.adm.ProfessorEditAdm" />

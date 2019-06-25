@@ -7,8 +7,10 @@ public class Curso implements Parcelable {
     private int codigo;
     private String nome;
     private String sigla;
-    private String ramal;
+    private int ramal;
     private int duracao;
+    private String sigla_faculdade;
+    private int codigo_bloco;
 
     public int getCodigo() {
         return codigo;
@@ -34,11 +36,11 @@ public class Curso implements Parcelable {
         this.sigla = sigla;
     }
 
-    public String getRamal() {
+    public int getRamal() {
         return ramal;
     }
 
-    public void setRamal(String ramal) {
+    public void setRamal(int ramal) {
         this.ramal = ramal;
     }
 
@@ -50,6 +52,23 @@ public class Curso implements Parcelable {
         this.duracao = duracao;
     }
 
+    public int getCodigo_bloco() {
+        return codigo_bloco;
+    }
+
+    public void setCodigo_bloco(int codigo_bloco) {
+        this.codigo_bloco = codigo_bloco;
+    }
+
+    public String getSigla_faculdade() {
+        return sigla_faculdade;
+    }
+
+    public void setSigla_faculdade(String sigla_faculdade) {
+        this.sigla_faculdade = sigla_faculdade;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -60,8 +79,10 @@ public class Curso implements Parcelable {
         dest.writeInt(this.codigo);
         dest.writeString(this.nome);
         dest.writeString(this.sigla);
-        dest.writeString(this.ramal);
+        dest.writeInt(this.ramal);
         dest.writeInt(this.duracao);
+        dest.writeString(this.sigla_faculdade);
+        dest.writeInt(this.codigo_bloco);
     }
 
     public Curso() {
@@ -71,11 +92,13 @@ public class Curso implements Parcelable {
         this.codigo = in.readInt();
         this.nome = in.readString();
         this.sigla = in.readString();
-        this.ramal = in.readString();
+        this.ramal = in.readInt();
         this.duracao = in.readInt();
+        this.sigla_faculdade = in.readString();
+        this.codigo_bloco = in.readInt();
     }
 
-    public static final Parcelable.Creator<Curso> CREATOR = new Parcelable.Creator<Curso>() {
+    public static final Creator<Curso> CREATOR = new Creator<Curso>() {
         @Override
         public Curso createFromParcel(Parcel source) {
             return new Curso(source);

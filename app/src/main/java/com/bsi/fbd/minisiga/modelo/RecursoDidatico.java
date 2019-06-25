@@ -10,6 +10,7 @@ public class RecursoDidatico implements Parcelable {
     private String data;
     private String horario;
     private String cpfProfessor;
+    private String sigla_faculdade;
 
     public int getCodigo() {
         return codigo;
@@ -59,6 +60,15 @@ public class RecursoDidatico implements Parcelable {
         this.cpfProfessor = cpfProfessor;
     }
 
+    public String getSigla_faculdade() {
+        return sigla_faculdade;
+    }
+
+    public void setSigla_faculdade(String sigla_faculdade) {
+        this.sigla_faculdade = sigla_faculdade;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -72,6 +82,7 @@ public class RecursoDidatico implements Parcelable {
         dest.writeString(this.data);
         dest.writeString(this.horario);
         dest.writeString(this.cpfProfessor);
+        dest.writeString(this.sigla_faculdade);
     }
 
     public RecursoDidatico() {
@@ -84,9 +95,10 @@ public class RecursoDidatico implements Parcelable {
         this.data = in.readString();
         this.horario = in.readString();
         this.cpfProfessor = in.readString();
+        this.sigla_faculdade = in.readString();
     }
 
-    public static final Parcelable.Creator<RecursoDidatico> CREATOR = new Parcelable.Creator<RecursoDidatico>() {
+    public static final Creator<RecursoDidatico> CREATOR = new Creator<RecursoDidatico>() {
         @Override
         public RecursoDidatico createFromParcel(Parcel source) {
             return new RecursoDidatico(source);

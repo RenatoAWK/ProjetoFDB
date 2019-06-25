@@ -17,6 +17,7 @@ import com.bsi.fbd.minisiga.gui.adm.AlunoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.AlunoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.MainBlocoActivity;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -41,6 +42,7 @@ public class Response {
     private ArrayList<Object> resultado = new ArrayList<>();
     private Integer positionItem = null;
     private String urlDelete;
+    private String query;
 
 
 
@@ -66,6 +68,7 @@ public class Response {
                     try {
                         jsonObject = new JSONObject(response);
                         boolean error = jsonObject.getBoolean("erro"); //Esse erro é o mesmo passado lá no php
+                        query = jsonObject.getString("query");
                         if (!error) {
                             if (recyclerView != null){
                                 if (positionItem != null && urlDelete != null){ //Se chegou aqui, quer dizer que está apagando
@@ -130,6 +133,44 @@ public class Response {
                                             setUpAdapter();
                                         }
 
+                                    } else if (tipo.equals("sala")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Sala sala = new Sala();
+                                                sala.setNumero(item.getInt("numero"));
+                                                sala.setTipo(item.getString("tipo"));
+                                                sala.setArea(item.getString("area"));
+                                                sala.setSiglaFaculdade(item.getString("sigla_faculdade"));
+                                                sala.setCodigoBloco(item.getInt("codigo_bloco"));
+                                                resultado.add(sala);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
+                                        }
+
+                                    } else if (tipo.equals("curso")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Curso curso = new Curso();
+                                                curso.setNome(item.getString("nome"));
+                                                curso.setCodigo(item.getInt("codigo"));
+                                                curso.setDuracao(item.getInt("duracao"));
+                                                curso.setSigla(item.getString("sigla"));
+                                                curso.setRamal(item.getInt("ramal"));
+                                                curso.setSigla_faculdade(item.getString("sigla_faculdade"));
+                                                curso.setCodigo_bloco(item.getInt("codigo_bloco"));
+                                                resultado.add(curso);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
+                                        }
+
                                     }
 
 
@@ -143,7 +184,7 @@ public class Response {
                             Toast.makeText(context.getApplicationContext(), "Erro 1", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
-                        Toast.makeText(context.getApplicationContext(), "Erro 2 "+e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context.getApplicationContext(), "Erro 2 "+e.getMessage()+"\n"+query+"\n"+response, Toast.LENGTH_LONG).show();
                     }
 
                 }
@@ -185,6 +226,16 @@ public class Response {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ////// mandar para próxima tela
+                Object item = resultado.get(position);
+                Intent intent ;
+                if (item instanceof Bloco){
+                    intent = new Intent(context, MainBlocoActivity.class);
+                    intent.putExtra("bloco",(Bloco) item);
+                    User.setBloco((Bloco) item);
+                    context.startActivity(intent);
+                }
+
+
             }
         });
 
@@ -198,17 +249,25 @@ public class Response {
                     intent = new Intent(context, BlocoDetailAdm.class);
                     intent.putExtra("bloco", (Bloco) item);
                     context.startActivity(intent);
-                } else if (item instanceof Aluno){
+                } else if (item instanceof Aluno) {
                     intent = new Intent(context, AlunoDetailAdm.class);
-                    intent.putExtra("aluno",(Aluno)item);
+                    intent.putExtra("aluno", (Aluno) item);
                     context.startActivity(intent);
-                } else if (item instanceof Professor){
+                } else if (item instanceof Professor) {
                     intent = new Intent(context, ProfessorDetailAdm.class);
-                    intent.putExtra("professor",(Professor) item);
+                    intent.putExtra("professor", (Professor) item);
                     context.startActivity(intent);
+                } else if (item instanceof Sala) {
+                    //intent = new Intent(context, ProfessorDetailAdm.class);
+                    //intent.putExtra("professor",(Professor) item);
+                    //context.startActivity(intent);
+                } else if (item instanceof Curso) {
+                    //intent = new Intent(context, ProfessorDetailAdm.class);
+                    //intent.putExtra("professor",(Professor) item);
+                    //context.startActivity(intent);
                 }
-                /////////////
 
+                /////////////
 
                 return false;
             }
@@ -237,6 +296,14 @@ public class Response {
                         intent = new Intent(context, ProfessorEditAdm.class);
                         intent.putExtra("professor",(Professor) item);
                          context.startActivity(intent);
+                    } else if (item instanceof Sala){
+                        //intent = new Intent(context, ProfessorEditAdm.class);
+                        //intent.putExtra("professor",(Professor) item);
+                        //context.startActivity(intent);
+                    } else if (item instanceof Curso){
+                        //intent = new Intent(context, ProfessorEditAdm.class);
+                        //intent.putExtra("professor",(Professor) item);
+                        //context.startActivity(intent);
                     }
                     /////////////
 
@@ -260,6 +327,19 @@ public class Response {
                         params.put("sigla_faculdade", faculdade.getSigla());
                         params.put("cpf", professor.getCpf());
                         run(params);
+                    } else if (item instanceof Sala) {
+                        //urlDelete = Connection.getUrl() + "deleteprofessor.php";
+                        //Professor professor = (Professor) item;
+                        //params.put("sigla_faculdade", faculdade.getSigla());
+                        //params.put("cpf", professor.getCpf());
+                        //run(params);
+                    } else if (item instanceof Curso) {
+                        //urlDelete = Connection.getUrl() + "deleteprofessor.php";
+                        //Professor professor = (Professor) item;
+                        //params.put("sigla_faculdade", faculdade.getSigla());
+                        //params.put("cpf", professor.getCpf());
+                        //run(params);
+
                     }
                     /////////////
 

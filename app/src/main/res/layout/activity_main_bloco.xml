@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".gui.adm.Main_Adm_Activity"
-    style="@style/_coordinatorLayout">
+    style="@style/_coordinatorLayout"
+    tools:context=".gui.adm.MainBlocoActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -13,7 +12,7 @@
         android:theme="@style/_AppTheme_Tabbed">
 
         <TextView
-            android:id="@+id/titleMainAdm"
+            android:id="@+id/titleMainBloco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
