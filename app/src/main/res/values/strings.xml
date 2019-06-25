@@ -39,4 +39,6 @@
     <string name="teacher">Professor</string>
     <string name="mini_siga">Mini Siga</string>
     <string name="date_implementation">Data de implantação</string>
+    <string name="room">Sala</string>
+    <string name="room_number">Numero da sala</string>
 </resources>
