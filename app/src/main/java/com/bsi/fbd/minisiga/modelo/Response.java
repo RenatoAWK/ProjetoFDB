@@ -17,9 +17,11 @@ import com.bsi.fbd.minisiga.gui.adm.AlunoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.AlunoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.CursoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.MainBlocoActivity;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.SalaEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.json.JSONException;
@@ -297,13 +299,13 @@ public class Response {
                         intent.putExtra("professor",(Professor) item);
                          context.startActivity(intent);
                     } else if (item instanceof Sala){
-                        //intent = new Intent(context, ProfessorEditAdm.class);
-                        //intent.putExtra("professor",(Professor) item);
-                        //context.startActivity(intent);
+                        intent = new Intent(context, SalaEditAdm.class);
+                        intent.putExtra("sala",(Sala) item);
+                        context.startActivity(intent);
                     } else if (item instanceof Curso){
-                        //intent = new Intent(context, ProfessorEditAdm.class);
-                        //intent.putExtra("professor",(Professor) item);
-                        //context.startActivity(intent);
+                        intent = new Intent(context, CursoEditAdm.class);
+                        intent.putExtra("curso",(Curso) item);
+                        context.startActivity(intent);
                     }
                     /////////////
 

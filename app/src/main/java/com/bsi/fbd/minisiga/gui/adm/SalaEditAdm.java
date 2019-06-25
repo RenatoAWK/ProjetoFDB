@@ -36,9 +36,9 @@ public class SalaEditAdm extends AppCompatActivity {
         Intent intent = getIntent();
         sala = intent.getParcelableExtra("sala");
 
-        numeroLayoutEditSala = findViewById(R.id.codigoLayoutEditBloco);
-        areaLayoutEditSala = findViewById(R.id.areaLayoutEditBloco);
-        tipoLayoutEditSala = findViewById(R.id.tipoLayoutEditBloco);
+        numeroLayoutEditSala = findViewById(R.id.numeroLayoutEditSala);
+        areaLayoutEditSala = findViewById(R.id.areaLayoutEditSala);
+        tipoLayoutEditSala = findViewById(R.id.tipoLayoutEditSala);
 
         numeroLayoutEditSala.getEditText().setText(String.valueOf(sala.getNumero()));
         areaLayoutEditSala.getEditText().setText(sala.getArea());
@@ -73,6 +73,7 @@ public class SalaEditAdm extends AppCompatActivity {
             params.put("area", areaLayoutEditSala.getEditText().getText().toString().trim());
             params.put("tipo", tipoLayoutEditSala.getEditText().getText().toString().trim());
             params.put("sigla_faculdade", faculdade.getSigla() );
+            params.put("codigo_bloco", String.valueOf(sala.getCodigoBloco()));
             response.run(params);
 
         }
