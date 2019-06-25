@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.CursoEditAdm"></activity>
+        <activity android:name=".gui.adm.CursoDetailAdm"></activity>
+        <activity android:name=".gui.adm.SalaDetailAdm" />
+        <activity android:name=".gui.adm.CursoEditAdm" />
         <activity android:name=".gui.adm.SalaEditAdm" />
         <activity android:name=".gui.adm.CursoRegisterAdm" />
         <activity android:name=".gui.adm.SalaRegisterAdm" />
