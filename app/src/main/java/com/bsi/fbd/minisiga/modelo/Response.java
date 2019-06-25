@@ -330,17 +330,19 @@ public class Response {
                         params.put("cpf", professor.getCpf());
                         run(params);
                     } else if (item instanceof Sala) {
-                        //urlDelete = Connection.getUrl() + "deleteprofessor.php";
-                        //Professor professor = (Professor) item;
-                        //params.put("sigla_faculdade", faculdade.getSigla());
-                        //params.put("cpf", professor.getCpf());
-                        //run(params);
+                        urlDelete = Connection.getUrl() + "deletesala.php";
+                        Sala sala = (Sala) item;
+                        params.put("sigla_faculdade", sala.getSiglaFaculdade());
+                        params.put("codigo_bloco", String.valueOf(sala.getCodigoBloco()));
+                        params.put("numero", String.valueOf(sala.getNumero()));
+                        run(params);
                     } else if (item instanceof Curso) {
-                        //urlDelete = Connection.getUrl() + "deleteprofessor.php";
-                        //Professor professor = (Professor) item;
-                        //params.put("sigla_faculdade", faculdade.getSigla());
-                        //params.put("cpf", professor.getCpf());
-                        //run(params);
+                        urlDelete = Connection.getUrl() + "deletecurso.php";
+                        Curso curso = (Curso) item;
+                        params.put("sigla_faculdade", curso.getSigla_faculdade());
+                        params.put("codigo_bloco", String.valueOf(curso.getCodigo_bloco()));
+                        params.put("codigo", String.valueOf(curso.getCodigo()));
+                        run(params);
 
                     }
                     /////////////
