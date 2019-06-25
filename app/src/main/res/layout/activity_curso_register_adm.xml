@@ -62,10 +62,16 @@
         <com.google.android.material.textfield.TextInputEditText
             style="@style/_textInputEdit"
             android:hint="@string/initials"
-            android:inputType="number"
+            android:inputType="text"
             android:maxLength="15">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/cadastrarButtonRegisterAluno"
+        style="@style/_button"
+        android:text="@string/save"
+        android:onClick="salvar"/>
 </LinearLayout>
 
 </ScrollView>

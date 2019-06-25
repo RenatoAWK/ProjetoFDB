@@ -32,7 +32,7 @@ public class SalaRegisterAdm extends AppCompatActivity {
         setContentView(R.layout.activity_sala_register_adm);
 
         Intent intent = getIntent();
-        bloco = intent.getParcelableExtra("sala");
+        bloco = intent.getParcelableExtra("bloco");
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -69,6 +69,8 @@ public class SalaRegisterAdm extends AppCompatActivity {
             params.put("area", areaLayout.getEditText().getText().toString().trim());
             params.put("tipo", tipoLayout.getEditText().getText().toString().trim());
             params.put("sigla_faculdade", faculdade.getSigla() );
+            params.put("codigo_bloco", String.valueOf(bloco.getCodigo()));
+
             response.run(params);
 
         }

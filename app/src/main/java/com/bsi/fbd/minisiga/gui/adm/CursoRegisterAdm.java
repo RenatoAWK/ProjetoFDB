@@ -67,11 +67,13 @@ public class CursoRegisterAdm extends AppCompatActivity {
 
         if (valido) {
             Map<String, String> params = new HashMap<>();
+            params.put("codigo", codigoLayout.getEditText().getText().toString().trim());
             params.put("nome", nomeLayout.getEditText().getText().toString().trim());
             params.put("duracao", duracaoLayout.getEditText().getText().toString().trim());
             params.put("sigla", siglaLayout.getEditText().getText().toString().trim());
             params.put("ramal", ramalLayout.getEditText().getText().toString().trim());
             params.put("sigla_faculdade", faculdade.getSigla() );
+            params.put("codigo_bloco", String.valueOf(bloco.getCodigo()));
             response.run(params);
 
 
