@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/_linearLayout"
+    tools:context=".gui.adm.TurmaEditAdm">
+
+
+    <LinearLayout
+        style="@style/_linearLayout">
+
+        <TextView
+            style="@style/_registerTitle"
+            android:text="@string/classs" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/anoLayoutEditTurma"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/year"
+                android:inputType="number"
+                android:maxLength="4">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codigoLayoutEditTurma"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/classs_code"
+                android:inputType="number"
+                android:maxLength="150">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cursoRadioTurma"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/_button"
+            android:text="@string/save"
+            android:onClick="salvar"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -25,6 +25,7 @@ import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.SalaDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.SalaEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.TurmaEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import org.json.JSONException;
@@ -331,6 +332,10 @@ public class Response {
                     } else if (item instanceof Curso){
                         intent = new Intent(context, CursoEditAdm.class);
                         intent.putExtra("curso",(Curso) item);
+                        context.startActivity(intent);
+                    } else if (item instanceof Turma){
+                        intent = new Intent(context, TurmaEditAdm.class);
+                        intent.putExtra("turma",(Turma) item);
                         context.startActivity(intent);
                     }
                     /////////////
