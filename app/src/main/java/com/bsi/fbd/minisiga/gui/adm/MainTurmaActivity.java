@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.TurmaAdmFragment;
 import com.bsi.fbd.minisiga.modelo.Sala;
+import com.bsi.fbd.minisiga.modelo.Turma;
 import com.bsi.fbd.minisiga.modelo.ViewPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -30,7 +31,7 @@ public class MainTurmaActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         sala = intent.getParcelableExtra("sala");
 
 
@@ -41,6 +42,9 @@ public class MainTurmaActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent1 = new Intent(getApplicationContext(), TurmaRegisterAdm.class);
+                intent1.putExtra("sala",sala);
+                startActivity(intent1);
 
             }
         });

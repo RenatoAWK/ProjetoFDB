@@ -45,4 +45,7 @@
     <string name="course_code">Código do curso</string>
     <string name="course_duration">Duração do curso</string>
     <string name="ramal">Ramal</string>
+    <string name="classs">Turma</string>
+    <string name="classs_code">Codigo da turma</string>
+    <string name="year">Ano</string>
 </resources>
