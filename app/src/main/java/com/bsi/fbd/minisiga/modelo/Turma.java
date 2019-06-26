@@ -10,7 +10,6 @@ public class Turma implements Parcelable {
     private int codigoBloco;
     private int numeroSala;
     private int codigoCurso;
-    private String sigla_faculdade;
 
     public int getCodigo() {
         return codigo;
@@ -60,14 +59,6 @@ public class Turma implements Parcelable {
         this.codigoCurso = codigoCurso;
     }
 
-    public String getSigla_faculdade() {
-        return sigla_faculdade;
-    }
-
-    public void setSigla_faculdade(String sigla_faculdade) {
-        this.sigla_faculdade = sigla_faculdade;
-    }
-
 
     @Override
     public int describeContents() {
@@ -82,7 +73,6 @@ public class Turma implements Parcelable {
         dest.writeInt(this.codigoBloco);
         dest.writeInt(this.numeroSala);
         dest.writeInt(this.codigoCurso);
-        dest.writeString(this.sigla_faculdade);
     }
 
     public Turma() {
@@ -95,7 +85,6 @@ public class Turma implements Parcelable {
         this.codigoBloco = in.readInt();
         this.numeroSala = in.readInt();
         this.codigoCurso = in.readInt();
-        this.sigla_faculdade = in.readString();
     }
 
     public static final Creator<Turma> CREATOR = new Creator<Turma>() {

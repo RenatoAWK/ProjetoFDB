@@ -20,6 +20,7 @@ import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.CursoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.CursoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.MainBlocoActivity;
+import com.bsi.fbd.minisiga.gui.adm.MainTurmaActivity;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.SalaDetailAdm;
@@ -175,6 +176,25 @@ public class Response {
                                             setUpAdapter();
                                         }
 
+                                    } else if (tipo.equals("turma")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Turma turma = new Turma();
+                                                turma.setAno(item.getString("ano"));
+                                                turma.setCodigo(item.getInt("codigo"));
+                                                turma.setCodigoBloco(item.getInt("codigo_bloco"));
+                                                turma.setNumeroSala(item.getInt("numero_sala"));
+                                                turma.setCodigoCurso(item.getInt("codigo_curso"));
+                                                turma.setSiglaFaculdade(item.getString("sigla_faculdade"));
+                                                resultado.add(turma);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler, resultado);
+                                            setUpAdapter();
+                                        }
+
                                     }
 
 
@@ -236,6 +256,10 @@ public class Response {
                     intent = new Intent(context, MainBlocoActivity.class);
                     intent.putExtra("bloco",(Bloco) item);
                     User.setBloco((Bloco) item);
+                    context.startActivity(intent);
+                } else  if (item instanceof Sala){
+                    intent = new Intent(context, MainTurmaActivity.class);
+                    intent.putExtra("sala" ,(Sala) item);
                     context.startActivity(intent);
                 }
 
