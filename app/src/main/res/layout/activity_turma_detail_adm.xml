@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/_scrollview"
+    tools:context=".gui.adm.TurmaDetailAdm">
+
+    <LinearLayout
+       style="@style/_linearLayout">
+
+        <TextView
+            style="@style/_registerTitle"
+            android:text="@string/classs" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/anoLayoutDetailTurma"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/year"
+                android:inputType="number"
+                android:maxLength="150"
+                android:focusable="false">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codigoLayoutDetailTurma"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/classs_code"
+                android:inputType="number"
+                android:maxLength="150"
+                android:focusable="false">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codigoCursoLayoutDetailTurma"
+            style="@style/_textInputLayoutOutlined">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/course_code"
+                android:inputType="number"
+                android:maxLength="150"
+                android:focusable="false">
+
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/alunosRecyclerdetailTurma"
+            style="@style/_recyclerView"/>
+    </LinearLayout>
+
+</ScrollView>

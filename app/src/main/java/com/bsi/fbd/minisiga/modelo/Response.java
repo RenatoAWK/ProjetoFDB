@@ -25,6 +25,7 @@ import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.SalaDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.SalaEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.TurmaDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.TurmaEditAdm;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -196,6 +197,25 @@ public class Response {
                                             setUpAdapter();
                                         }
 
+                                    } else if (tipo.equals("aluno_cadastrado")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Aluno aluno = new Aluno();
+                                                aluno.setCpf(item.getString("cpf"));
+                                                aluno.setNome(item.getString("nome"));
+                                                aluno.setEndereco(item.getString("endereco"));
+                                                aluno.setEmail(item.getString("email"));
+                                                aluno.setSenha(item.getString("senha"));
+                                                resultado.add(aluno);
+                                            }
+                                            QuickAdapterSimple adapterSimple = new QuickAdapterSimple(R.layout.layout_item_simple_recycler, resultado);
+                                            recyclerView.setAdapter(adapterSimple);
+                                        }
+
+
                                     }
 
 
@@ -293,6 +313,10 @@ public class Response {
                 } else if (item instanceof Curso) {
                     intent = new Intent(context, CursoDetailAdm.class);
                     intent.putExtra("curso",(Curso) item);
+                    context.startActivity(intent);
+                } else if (item instanceof Turma) {
+                    intent = new Intent(context, TurmaDetailAdm.class);
+                    intent.putExtra("turma",(Turma) item);
                     context.startActivity(intent);
                 }
 

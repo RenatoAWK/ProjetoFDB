@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/_linearLayout"
+    android:elevation="16dp">
+
+    <TextView
+        android:id="@+id/texto1"
+        style="@style/_texto1ItemRecycler" />
+
+    <TextView
+        android:id="@+id/texto2"
+        style="@style/_texto2ItemRecycler" />
+
+</LinearLayout>
