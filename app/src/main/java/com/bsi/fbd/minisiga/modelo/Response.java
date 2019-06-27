@@ -399,6 +399,15 @@ public class Response {
                         params.put("codigo", String.valueOf(curso.getCodigo()));
                         run(params);
 
+                    } else if (item instanceof Turma) {
+                        urlDelete = Connection.getUrl() + "deleteturma.php";
+                        Turma turma = (Turma) item;
+                        params.put("sigla_faculdade", turma.getSiglaFaculdade());
+                        params.put("codigo_bloco", String.valueOf(turma.getCodigoBloco()));
+                        params.put("codigo", String.valueOf(turma.getCodigo()));
+                        params.put("codigo_curso", String.valueOf(turma.getCodigoCurso()));
+                        run(params);
+
                     }
                     /////////////
 
