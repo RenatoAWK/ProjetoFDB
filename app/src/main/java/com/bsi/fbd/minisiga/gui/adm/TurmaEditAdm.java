@@ -61,6 +61,7 @@ public class TurmaEditAdm extends AppCompatActivity {
 
         Intent intent = getIntent();
         turma = intent.getParcelableExtra("turma");
+        User.setTurma(turma);
 
         anoLayout = findViewById(R.id.anoLayoutEditTurma);
         codigoLayout = findViewById(R.id.codigoLayoutEditTurma);
@@ -186,5 +187,10 @@ public class TurmaEditAdm extends AppCompatActivity {
             paramsR.put("codigo_antigo", String.valueOf(turma.getCodigo()));
             response.run(paramsR);
         }
+    }
+
+    public void add_removeStudent(View view) {
+        Intent intent = new Intent(getApplicationContext(), TurmaAlunosEditAdm.class);
+        startActivity(intent);
     }
 }

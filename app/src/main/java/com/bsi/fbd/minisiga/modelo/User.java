@@ -3,6 +3,7 @@ package com.bsi.fbd.minisiga.modelo;
 public class User {
     private static Object currentUser;
     private static Bloco bloco;
+    private static Turma turma;
 
     public static Object getCurrentUser() {
         return currentUser;
@@ -30,5 +31,13 @@ public class User {
 
     public static void setBloco(Bloco bloco) {
         User.bloco = bloco;
+    }
+
+    public static Turma getTurma() {
+        return turma;
+    }
+
+    public static void setTurma(Turma turma) {
+        User.turma = turma;
     }
 }

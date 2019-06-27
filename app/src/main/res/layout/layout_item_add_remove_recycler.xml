@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/_linearLayout">
+
+    <TextView
+        android:id="@+id/texto1"
+        style="@style/_texto1ItemRecycler" />
+
+    <TextView
+        android:id="@+id/texto2"
+        style="@style/_texto2ItemRecycler" />
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/_button"
+        android:id="@+id/add"
+        android:text="@string/add"/>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/_button"
+        android:id="@+id/remove"
+        android:text="@string/remove"/>
+
+</LinearLayout>

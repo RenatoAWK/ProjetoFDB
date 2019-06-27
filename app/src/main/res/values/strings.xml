@@ -48,4 +48,8 @@
     <string name="classs">Turma</string>
     <string name="classs_code">Codigo da turma</string>
     <string name="year">Ano</string>
+    <string name="add_remove_student">Adicionar / Remover aluno</string>
+    <string name="add_or_remove">Adicionar ou remover</string>
+    <string name="add">Adicionar</string>
+    <string name="remove">Remover</string>
 </resources>

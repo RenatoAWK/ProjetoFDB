@@ -47,6 +47,11 @@
 
         <com.google.android.material.button.MaterialButton
             style="@style/_button"
+            android:text="@string/add_remove_student"
+            android:onClick="add_removeStudent"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/_button"
             android:text="@string/save"
             android:onClick="salvar"/>
     </LinearLayout>
