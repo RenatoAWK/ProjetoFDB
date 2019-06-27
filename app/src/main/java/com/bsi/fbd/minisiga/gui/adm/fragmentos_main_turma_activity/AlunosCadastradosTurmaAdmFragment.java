@@ -53,6 +53,7 @@ public class AlunosCadastradosTurmaAdmFragment extends Fragment {
         params.put("sigla_faculdade", User.getTurma().getSiglaFaculdade());
         params.put("codigo_turma",String.valueOf(User.getTurma().getCodigo()));
         response.run(params);
+        User.setAlunosCadastrados(response);
         return view;
     }
 

@@ -64,7 +64,7 @@ public class ResponseAR {
                                     positionItem = null;
                                     urlDelete = null;
                                 } else { ///Se chegou aqui, quer dizer que vai retornar
-
+                                    resultado.clear();
                                     String tipo = jsonObject.getString("tipo");
                                     if (tipo.equals("aluno_cadastrado")) {
 

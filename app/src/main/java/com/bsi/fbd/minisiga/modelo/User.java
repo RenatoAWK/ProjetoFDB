@@ -4,6 +4,8 @@ public class User {
     private static Object currentUser;
     private static Bloco bloco;
     private static Turma turma;
+    private static ResponseAR alunosCadastrados;
+    private static ResponseAR alunosNaoCadastrados;
 
     public static Object getCurrentUser() {
         return currentUser;
@@ -39,5 +41,21 @@ public class User {
 
     public static void setTurma(Turma turma) {
         User.turma = turma;
+    }
+
+    public static ResponseAR getAlunosCadastrados() {
+        return alunosCadastrados;
+    }
+
+    public static void setAlunosCadastrados(ResponseAR alunosCadastrados) {
+        User.alunosCadastrados = alunosCadastrados;
+    }
+
+    public static ResponseAR getAlunosNaoCadastrados() {
+        return alunosNaoCadastrados;
+    }
+
+    public static void setAlunosNaoCadastrados(ResponseAR alunosNaoCadastrados) {
+        User.alunosNaoCadastrados = alunosNaoCadastrados;
     }
 }

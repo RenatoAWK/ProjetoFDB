@@ -51,11 +51,8 @@ public class AlunosNaoCadastradosTurmaAdmFragment extends Fragment {
         params.put("sigla_faculdade", User.getTurma().getSiglaFaculdade());
         params.put("codigo_turma",String.valueOf(User.getTurma().getCodigo()));
         response.run(params);
+        User.setAlunosNaoCadastrados(response);
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 }

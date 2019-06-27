@@ -15,6 +15,9 @@ import com.bsi.fbd.minisiga.modelo.User;
 import com.bsi.fbd.minisiga.modelo.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TurmaAlunosEditAdm extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -46,6 +49,32 @@ public class TurmaAlunosEditAdm extends AppCompatActivity {
         setUpViewPager(viewPager);
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 1){
+                    Map<String, String> params = new HashMap<>();
+                    params.put("sigla_faculdade", User.getTurma().getSiglaFaculdade());
+                    params.put("codigo_turma",String.valueOf(User.getTurma().getCodigo()));
+                    User.getAlunosNaoCadastrados().run(params);
+                } else {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("sigla_faculdade", User.getTurma().getSiglaFaculdade());
+                    params.put("codigo_turma",String.valueOf(User.getTurma().getCodigo()));
+                    User.getAlunosCadastrados().run(params);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         super.onStart();
     }
 }
