@@ -19,7 +19,8 @@
                 style="@style/_textInputEdit"
                 android:hint="@string/name"
                 android:inputType="text"
-                android:maxLength="150">
+                android:maxLength="150"
+                android:focusable="false">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,7 +31,8 @@
                 style="@style/_textInputEdit"
                 android:hint="@string/discipline_code"
                 android:inputType="number"
-                android:maxLength="150">
+                android:maxLength="150"
+                android:focusable="false">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,7 +43,8 @@
                 style="@style/_textInputEdit"
                 android:hint="@string/workload"
                 android:inputType="number"
-                android:maxLength="150">
+                android:maxLength="150"
+                android:focusable="false">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
