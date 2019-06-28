@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.CursoDisciplinaEditAdm"></activity>
+        <activity android:name=".gui.adm.DisciplinaConteudo"></activity>
+        <activity android:name=".gui.adm.DisciplinaProfessor" />
+        <activity android:name=".gui.adm.DisciplinaAluno" />
+        <activity android:name=".gui.adm.BridgeDisciplina" />
+        <activity android:name=".gui.adm.CursoDisciplinaEditAdm" />
         <activity android:name=".gui.adm.DisciplinaDetailAdm" />
         <activity android:name=".gui.adm.DisciplinaEditAdm" />
         <activity android:name=".gui.adm.DisciplinaRegisterAdm" />
