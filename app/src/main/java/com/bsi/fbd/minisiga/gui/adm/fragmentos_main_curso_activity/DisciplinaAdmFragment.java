@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.modelo.Bloco;
 import com.bsi.fbd.minisiga.modelo.Disciplina;
+import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.Response;
 import com.bsi.fbd.minisiga.modelo.User;
 
@@ -51,7 +52,8 @@ public class DisciplinaAdmFragment extends Fragment {
         resultado.clear();
         com.bsi.fbd.minisiga.modelo.Response response = new Response("getdisciplinas.php", context, recyclerView);
         Map<String, String> params = new HashMap<>();
-        params.put("sigla_faculdade",User.getBloco().getSiglaFaculdade());
+        Faculdade faculdade = (Faculdade) User.getCurrentUser();
+        params.put("sigla_faculdade",faculdade.getSigla());
         response.run(params);
         return view;
     }

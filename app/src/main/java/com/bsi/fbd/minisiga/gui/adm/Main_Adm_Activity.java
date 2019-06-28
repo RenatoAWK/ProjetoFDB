@@ -9,6 +9,7 @@ import com.bsi.fbd.minisiga.R;
 import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.AlunoAdmFragment;
 import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.BlocoAdmFragment;
 import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_adm_activity.ProfessorAdmFragment;
+import com.bsi.fbd.minisiga.gui.adm.fragmentos_main_curso_activity.DisciplinaAdmFragment;
 import com.bsi.fbd.minisiga.modelo.Faculdade;
 import com.bsi.fbd.minisiga.modelo.User;
 import com.bsi.fbd.minisiga.modelo.ViewPagerAdapter;
@@ -49,6 +50,9 @@ public class Main_Adm_Activity extends AppCompatActivity {
                 } else if (position == 2) {
                     Intent intent = new Intent(getApplicationContext(), ProfessorRegisterAdm.class);
                     startActivity(intent);
+                } else if (position == 3) {
+                    Intent intent = new Intent(getApplicationContext(), DisciplinaRegisterAdm.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -59,6 +63,7 @@ public class Main_Adm_Activity extends AppCompatActivity {
         adapter.addFragment(new BlocoAdmFragment(), "Blocos");
         adapter.addFragment(new AlunoAdmFragment(), "Alunos");
         adapter.addFragment(new ProfessorAdmFragment(), "Professores");
+        adapter.addFragment(new DisciplinaAdmFragment(), "Disciplinas");
         viewPager.setAdapter(adapter);
     }
 

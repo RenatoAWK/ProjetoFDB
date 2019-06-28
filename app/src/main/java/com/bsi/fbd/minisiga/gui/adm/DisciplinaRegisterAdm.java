@@ -63,10 +63,11 @@ public class DisciplinaRegisterAdm extends AppCompatActivity {
 
         if (valido) {
             Map<String, String> params = new HashMap<>();
+            Faculdade faculdade = (Faculdade) User.getCurrentUser();
             params.put("codigo", codigoLayout.getEditText().getText().toString().trim());
             params.put("nome", nomeLayout.getEditText().getText().toString().trim());
             params.put("carga_horaria", carga_horariaLayout.getEditText().getText().toString().trim());
-            params.put("sigla_faculdade", curso.getSigla_faculdade());
+            params.put("sigla_faculdade", faculdade.getSigla());
             response.run(params);
 
 

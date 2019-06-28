@@ -1,6 +1,5 @@
 package com.bsi.fbd.minisiga.modelo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -22,7 +21,6 @@ import com.bsi.fbd.minisiga.gui.adm.CursoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.DisciplinaDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.DisciplinaEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.MainBlocoActivity;
-import com.bsi.fbd.minisiga.gui.adm.MainCursoActivity;
 import com.bsi.fbd.minisiga.gui.adm.MainTurmaActivity;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
@@ -302,10 +300,6 @@ public class Response {
                 } else  if (item instanceof Sala){
                     intent = new Intent(context, MainTurmaActivity.class);
                     intent.putExtra("sala" ,(Sala) item);
-                    context.startActivity(intent);
-                } else  if (item instanceof Curso) {
-                    intent = new Intent(context, MainCursoActivity.class);
-                    intent.putExtra("curso", (Curso) item);
                     context.startActivity(intent);
                 }
 
