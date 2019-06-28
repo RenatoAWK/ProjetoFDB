@@ -19,7 +19,10 @@ import com.bsi.fbd.minisiga.gui.adm.BlocoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.BlocoEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.CursoDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.CursoEditAdm;
+import com.bsi.fbd.minisiga.gui.adm.DisciplinaDetailAdm;
+import com.bsi.fbd.minisiga.gui.adm.DisciplinaEditAdm;
 import com.bsi.fbd.minisiga.gui.adm.MainBlocoActivity;
+import com.bsi.fbd.minisiga.gui.adm.MainCursoActivity;
 import com.bsi.fbd.minisiga.gui.adm.MainTurmaActivity;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorDetailAdm;
 import com.bsi.fbd.minisiga.gui.adm.ProfessorEditAdm;
@@ -216,6 +219,24 @@ public class Response {
                                         }
 
 
+                                    } else if (tipo.equals("disciplina")){
+
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0){
+                                            for (int i = 0; i < qtd ; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Disciplina disciplina = new Disciplina();
+                                                disciplina.setNome(item.getString("nome"));
+                                                disciplina.setCargaHoraria(item.getInt("carga_horaria"));
+                                                disciplina.setCodigo(item.getInt("codigo"));
+                                                disciplina.setSigla_faculdade(item.getString("sigla_faculdade"));
+                                                resultado.add(disciplina);
+                                            }
+                                            adapter = new QuickAdapter(R.layout.layout_item_recycler,  resultado);
+                                            setUpAdapter();
+                                        }
+
+
                                     }
 
 
@@ -282,6 +303,10 @@ public class Response {
                     intent = new Intent(context, MainTurmaActivity.class);
                     intent.putExtra("sala" ,(Sala) item);
                     context.startActivity(intent);
+                } else  if (item instanceof Curso) {
+                    intent = new Intent(context, MainCursoActivity.class);
+                    intent.putExtra("curso", (Curso) item);
+                    context.startActivity(intent);
                 }
 
 
@@ -317,6 +342,10 @@ public class Response {
                 } else if (item instanceof Turma) {
                     intent = new Intent(context, TurmaDetailAdm.class);
                     intent.putExtra("turma",(Turma) item);
+                    context.startActivity(intent);
+                } else if (item instanceof Disciplina) {
+                    intent = new Intent(context, DisciplinaDetailAdm.class);
+                    intent.putExtra("disciplina",(Disciplina) item);
                     context.startActivity(intent);
                 }
 
@@ -360,6 +389,10 @@ public class Response {
                     } else if (item instanceof Turma){
                         intent = new Intent(context, TurmaEditAdm.class);
                         intent.putExtra("turma",(Turma) item);
+                        context.startActivity(intent);
+                    } else if (item instanceof Disciplina){
+                        intent = new Intent(context, DisciplinaEditAdm.class);
+                        intent.putExtra("disciplina",(Disciplina) item);
                         context.startActivity(intent);
                     }
                     /////////////
@@ -406,6 +439,13 @@ public class Response {
                         params.put("codigo_bloco", String.valueOf(turma.getCodigoBloco()));
                         params.put("codigo", String.valueOf(turma.getCodigo()));
                         params.put("codigo_curso", String.valueOf(turma.getCodigoCurso()));
+                        run(params);
+
+                    } else if (item instanceof Disciplina) {
+                        urlDelete = Connection.getUrl() + "deletedisciplina.php";
+                        Disciplina disciplina = (Disciplina) item;
+                        params.put("sigla_faculdade", disciplina.getSigla_faculdade());
+                        params.put("codigo", String.valueOf(disciplina.getCodigo()));
                         run(params);
 
                     }

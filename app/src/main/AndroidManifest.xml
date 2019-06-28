@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gui.adm.TurmaDetailAdm"></activity>
+        <activity android:name=".gui.adm.DisciplinaDetailAdm"></activity>
+        <activity android:name=".gui.adm.DisciplinaEditAdm" />
+        <activity android:name=".gui.adm.DisciplinaRegisterAdm" />
+        <activity android:name=".gui.adm.MainCursoActivity" />
+        <activity android:name=".gui.adm.TurmaDetailAdm" />
         <activity android:name=".gui.adm.TurmaAlunosEditAdm" />
         <activity android:name=".gui.adm.TurmaEditAdm" />
         <activity android:name=".gui.adm.TurmaRegisterAdm" />

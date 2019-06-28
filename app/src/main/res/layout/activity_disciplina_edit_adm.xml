@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/_scrollview"
+    tools:context=".gui.adm.DisciplinaEditAdm">
+
+    <LinearLayout
+        style="@style/_linearLayout">
+
+        <TextView
+            android:text="@string/discipline"
+            style="@style/_registerTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nomeLayoutEditDisciplina"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/name"
+                android:inputType="text"
+                android:maxLength="150">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/codigoLayoutEditDisciplina"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/discipline_code"
+                android:inputType="number"
+                android:maxLength="150">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/carga_horariaLayoutEditDisciplina"
+            style="@style/_textInputLayoutOutlined">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/_textInputEdit"
+                android:hint="@string/workload"
+                android:inputType="number"
+                android:maxLength="150">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cadastrarButtonEditDisciplina"
+            style="@style/_button"
+            android:text="@string/save"
+            android:onClick="salvar"/>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -52,4 +52,7 @@
     <string name="add_or_remove">Adicionar ou remover</string>
     <string name="add">Adicionar</string>
     <string name="remove">Remover</string>
+    <string name="discipline_code">Código da disciplina</string>
+    <string name="workload">Carga horária</string>
+    <string name="discipline">Disciplina</string>
 </resources>

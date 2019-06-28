@@ -51,8 +51,11 @@ public class QuickAdapter extends BaseQuickAdapter<Object, BaseViewHolder> {
                 Turma turma = (Turma) item;
                 texto1 = String.valueOf(turma.getCodigo());
                 texto2 = String.valueOf(turma.getAno());
+        } else if (item instanceof Disciplina) {
+            Disciplina disciplina = (Disciplina) item;
+            texto1 = String.valueOf(disciplina.getNome());
+            texto2 = String.valueOf(disciplina.getCodigo());
         }
-
         helper.setText(R.id.texto1,texto1);
         helper.setText(R.id.texto2,texto2);
         helper.addOnClickListener(R.id.edit);
