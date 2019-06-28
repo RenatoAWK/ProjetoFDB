@@ -55,4 +55,5 @@
     <string name="discipline_code">Código da disciplina</string>
     <string name="workload">Carga horária</string>
     <string name="discipline">Disciplina</string>
+    <string name="add_remove_disciplinas">Adicionar/Remover disciplinas</string>
 </resources>

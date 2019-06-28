@@ -100,8 +100,38 @@ public class ResponseAR {
                                             adapter = new QuickAdapterAR(R.layout.layout_item_add_remove_recycler, resultado).setAdd_remove("add");
                                             setUpAdapter();
                                         }
+                                    } else if (tipo.equals("disciplina_cadastrada")) {
 
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0) {
+                                            for (int i = 0; i < qtd; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Disciplina disciplina = new Disciplina();
+                                                disciplina.setNome(item.getString("nome"));
+                                                disciplina.setSigla_faculdade(item.getString("sigla_faculdade"));
+                                                disciplina.setCodigo(item.getInt("codigo"));
+                                                disciplina.setCargaHoraria(item.getInt("carga_horaria"));
+                                                resultado.add(disciplina);
+                                            }
+                                            adapter = new QuickAdapterAR(R.layout.layout_item_add_remove_recycler, resultado).setAdd_remove("remove");
+                                            setUpAdapter();
+                                        }
+                                    } else if (tipo.equals("disciplina_nao_cadastrada")) {
 
+                                        int qtd = jsonObject.getInt("qtd");
+                                        if (qtd > 0) {
+                                            for (int i = 0; i < qtd; i++) {
+                                                JSONObject item = jsonObject.getJSONObject(String.valueOf(i));
+                                                Disciplina disciplina = new Disciplina();
+                                                disciplina.setNome(item.getString("nome"));
+                                                disciplina.setSigla_faculdade(item.getString("sigla_faculdade"));
+                                                disciplina.setCodigo(item.getInt("codigo"));
+                                                disciplina.setCargaHoraria(item.getInt("carga_horaria"));
+                                                resultado.add(disciplina);
+                                            }
+                                            adapter = new QuickAdapterAR(R.layout.layout_item_add_remove_recycler, resultado).setAdd_remove("add");
+                                            setUpAdapter();
+                                        }
                                     }
 
                                 }
@@ -121,7 +151,7 @@ public class ResponseAR {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     String motivo = error.getMessage();
-                    Toast.makeText(context.getApplicationContext(), "Erro desconhecido: " + motivo, Toast.LENGTH_LONG).show();
+                    Toast.makeText(context.getApplicationContext(), "Erro desconhecido: " + motivo,  Toast.LENGTH_LONG).show();
                 }
             };
             if (urlDelete == null) {
@@ -158,12 +188,20 @@ public class ResponseAR {
                 Map<String, String> params = new HashMap<>();
 
                 if (view.getId() == R.id.add) {
-                    ////// apagar
+                    ////// adicionar
                     if (item instanceof Aluno) {
                         urlDelete = Connection.getUrl() + "registerturma_aluno.php";
                         Aluno aluno = (Aluno) item;
                         params.put("codigo_turma", String.valueOf(User.getTurma().getCodigo()));
                         params.put("cpf_aluno", aluno.getCpf());
+                        run(params);
+                        /////////////
+
+                    } else if (item instanceof Disciplina) {
+                        urlDelete = Connection.getUrl() + "registercurso_disciplina.php";
+                        Disciplina disciplina = (Disciplina) item;
+                        params.put("codigo_curso", String.valueOf(User.getCurso().getCodigo()));
+                        params.put("codigo_disciplina", String.valueOf(disciplina.getCodigo()));
                         run(params);
                         /////////////
 
@@ -177,6 +215,14 @@ public class ResponseAR {
                         Aluno aluno = (Aluno) item;
                         params.put("codigo_turma", String.valueOf(User.getTurma().getCodigo()));
                         params.put("cpf_aluno", aluno.getCpf());
+                        run(params);
+                        /////////////
+
+                    } else if (item instanceof Disciplina) {
+                        urlDelete = Connection.getUrl() + "deletecurso_disciplina.php";
+                        Disciplina disciplina = (Disciplina) item;
+                        params.put("codigo_curso", String.valueOf(User.getCurso().getCodigo()));
+                        params.put("codigo_disciplina", String.valueOf(disciplina.getCodigo()));
                         run(params);
                         /////////////
 

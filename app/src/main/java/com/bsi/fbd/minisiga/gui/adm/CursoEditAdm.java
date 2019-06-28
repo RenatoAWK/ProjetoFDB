@@ -36,6 +36,7 @@ public class CursoEditAdm extends AppCompatActivity {
 
         Intent intent = getIntent();
         curso = intent.getParcelableExtra("curso");
+        User.setCurso(curso);
 
         nomeLayout = findViewById(R.id.nomeLayoutEditCurso);
         codigoLayout = findViewById(R.id.codigoLayoutEditCurso);
@@ -63,5 +64,11 @@ public class CursoEditAdm extends AppCompatActivity {
         params.put("sigla_faculdade", curso.getSigla_faculdade());
         params.put("codigo_bloco", String.valueOf(curso.getCodigo_bloco()));
         response.run(params);
+    }
+
+    public void add_removeDisciplina(View view) {
+        Intent intent = new Intent(getApplicationContext(), CursoDisciplinaEditAdm.class );
+        intent.putExtra("curso",curso );
+        startActivity(intent);
     }
 }

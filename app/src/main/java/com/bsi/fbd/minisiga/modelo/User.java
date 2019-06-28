@@ -6,6 +6,10 @@ public class User {
     private static Turma turma;
     private static ResponseAR alunosCadastrados;
     private static ResponseAR alunosNaoCadastrados;
+    private static Curso curso;
+    private static ResponseAR disciplinasCadastradas;
+    private static ResponseAR disciplinasNaoCadastradas;
+
 
     public static Object getCurrentUser() {
         return currentUser;
@@ -57,5 +61,29 @@ public class User {
 
     public static void setAlunosNaoCadastrados(ResponseAR alunosNaoCadastrados) {
         User.alunosNaoCadastrados = alunosNaoCadastrados;
+    }
+
+    public static Curso getCurso() {
+        return curso;
+    }
+
+    public static void setCurso(Curso curso) {
+        User.curso = curso;
+    }
+
+    public static ResponseAR getDisciplinasCadastradas() {
+        return disciplinasCadastradas;
+    }
+
+    public static void setDisciplinasCadastradas(ResponseAR disciplinasCadastradas) {
+        User.disciplinasCadastradas = disciplinasCadastradas;
+    }
+
+    public static ResponseAR getDisciplinasNaoCadastradas() {
+        return disciplinasNaoCadastradas;
+    }
+
+    public static void setDisciplinasNaoCadastradas(ResponseAR disciplinasNaoCadastradas) {
+        User.disciplinasNaoCadastradas = disciplinasNaoCadastradas;
     }
 }

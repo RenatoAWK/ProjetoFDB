@@ -32,6 +32,10 @@ public class QuickAdapterAR extends BaseQuickAdapter<Object, BaseViewHolder> {
             Aluno aluno = (Aluno) item;
             texto1 = aluno.getNome();
             texto2 = aluno.getEmail();
+        } else if (item instanceof Disciplina) {
+            Disciplina disciplina = (Disciplina) item;
+            texto1 = disciplina.getNome();
+            texto2 = String.valueOf(disciplina.getCodigo());
         }
 
         helper.setText(R.id.texto1,texto1);

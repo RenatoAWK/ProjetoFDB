@@ -68,6 +68,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/editarButtonEditAluno"
+            style="@style/_button"
+            android:text="@string/add_remove_disciplinas"
+            android:onClick="add_removeDisciplina"/>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/cadastrarButtonEditAluno"
             style="@style/_button"
             android:text="@string/save"
